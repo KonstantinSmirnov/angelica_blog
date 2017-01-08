@@ -27,12 +27,14 @@ feature 'Dashboard' do
       click_link 'Dashboard'
 
       expect(current_path).to eq(admin_dashboard_path)
+      expect(page).to have_selector('a.active', text: 'Dashboard')
     end
 
     scenario 'has link to articles list' do
       click_link 'Articles'
 
       expect(current_path).to eq(admin_articles_path)
+      expect(page).to have_selector('a.active', text: 'Articles')
     end
 
   end

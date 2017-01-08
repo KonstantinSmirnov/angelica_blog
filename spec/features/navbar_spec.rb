@@ -19,6 +19,7 @@ feature 'Navbar' do
 
       expect(current_path).to eq(admin_dashboard_path)
       expect(page).to have_text("Dashboard")
+      expect(page).to have_selector('a.active', text: 'Admin')
     end
   end
 end

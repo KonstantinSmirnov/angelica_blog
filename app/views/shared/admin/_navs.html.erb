@@ -1,8 +1,8 @@
 <ul class="nav nav-pills nav-stacked">
   <li class="nav-item">
-    <%= link_to "Dashboard", admin_dashboard_path, class: 'nav-link' %>
+    <%= link_to "Dashboard", admin_dashboard_path, class: "nav-link #{'active' if controller?('admin/dashboard')}" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Articles", admin_articles_path, class: 'nav-link' %>
+    <%= link_to "Articles", admin_articles_path, class: "nav-link #{'active' if controller?('admin/articles')}" %>
   </li>
 </ul>
