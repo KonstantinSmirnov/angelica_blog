@@ -59,3 +59,12 @@ end
 
 gem 'sorcery'
 gem 'simple_form'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails', '~> 4.4.1'
+end
+
+group :test do
+  gem 'capybara'
+end
