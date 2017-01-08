@@ -15,13 +15,26 @@ feature 'Dashboard' do
 
     before(:each) do
       log_in_with(admin.email, 'password')
-    end
-    scenario 'responds to dashboard_path' do
       visit admin_dashboard_path
+    end
 
+    scenario 'responds to dashboard_path' do
       expect(current_path).to eq(admin_dashboard_path)
       expect(page).to have_text("Dashboard")
     end
+
+    scenario 'has link to dashboard' do
+      click_link 'Dashboard'
+
+      expect(current_path).to eq(admin_dashboard_path)
+    end
+
+    scenario 'has link to articles list' do
+      click_link 'Articles'
+
+      expect(current_path).to eq(admin_articles_path)
+    end
+
   end
 
 end

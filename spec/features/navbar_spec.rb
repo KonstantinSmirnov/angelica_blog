@@ -21,5 +21,4 @@ feature 'Navbar' do
       expect(page).to have_text("Dashboard")
     end
   end
-
 end
