@@ -12,7 +12,14 @@
     <div class="container">
       <%= render 'shared/navbar' %>
       <%= render 'shared/messages' %>
-      <%= yield %>
+      <div class="col-sm-12">
+        <div class="col-xs-3">
+          <%= render 'shared/admin/navs' %>
+        </div>
+        <div class="col-sm-9">
+          <%= yield %>
+        </div>
+      </div>
     </div>
 
   </body>
