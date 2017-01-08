@@ -58,3 +58,4 @@ source 'https://rails-assets.org' do
 end
 
 gem 'sorcery'
+gem 'simple_form'
