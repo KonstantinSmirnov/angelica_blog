@@ -1,11 +1,11 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= link_to 'Add', '#', class: 'btn btn-primary btn-sm' %></th>
+      <th><%= link_to 'Add', new_admin_article_path, class: 'btn btn-primary btn-sm' %></th>
     </tr>
   </thead>
 </table>
 
-<% 8.times do %>
-  <%= render 'shared/admin/article_preview' %>
+<% @articles.each do |article| %>
+  <%= render :partial => 'article', locals: { :object => article} %>
 <% end %>
