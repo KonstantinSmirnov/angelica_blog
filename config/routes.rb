@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  
+
+  namespace :admin do
+    get 'dashboard' => 'dashboard#index'
+  end
 end
