@@ -9,6 +9,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboard' => 'dashboard#index'
-    get 'articles' => 'articles#index'
+    resources :articles
   end
 end

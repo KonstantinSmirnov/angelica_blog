@@ -51,6 +51,12 @@ RSpec.describe Admin, type: :model do
     expect(second_admin.errors[:email]).to include("has already been taken")
   end
 
+  it 'is valid with email, password and password confirmation' do
+    admin = FactoryGirl.create(:james_bond)
+
+    expect(admin).to be_valid
+  end
+
   describe 'Update' do
     it 'changes the password if we provide new password' do
       admin = FactoryGirl.create(:james_bond)

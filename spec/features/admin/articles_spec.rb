@@ -20,7 +20,19 @@ feature 'Admin articles' do
       visit admin_articles_path
 
       expect(current_path).to eq(admin_articles_path)
-      expect(page).to have_selector("h1", text: 'Articles')
+      expect(page).to have_selector("a.active", text: 'Articles')
+    end
+
+    describe 'Create' do
+
+    end
+
+    describe 'Update' do
+
+    end
+
+    describe 'Delete' do
+      
     end
   end
 end

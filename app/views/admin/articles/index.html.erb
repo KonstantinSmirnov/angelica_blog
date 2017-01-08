@@ -1,1 +1,11 @@
-<h1>Articles</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= link_to 'Add', '#', class: 'btn btn-primary btn-sm' %></th>
+    </tr>
+  </thead>
+</table>
+
+<% 8.times do %>
+  <%= render 'shared/admin/article_preview' %>
+<% end %>
