@@ -1,6 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :admin do
+  factory :james_bond, class: Admin do
+    email 'james_bond@example.com'
+    password 'password'
+    password_confirmation 'password'
   end
 end
