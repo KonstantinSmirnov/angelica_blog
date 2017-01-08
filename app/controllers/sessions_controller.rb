@@ -12,4 +12,10 @@ class SessionsController < ApplicationController
       render action: 'new'
     end
   end
+
+  def destroy
+    logout
+
+    redirect_to login_path, notice: 'Logged out successfully'
+  end
 end

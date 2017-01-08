@@ -1,0 +1,14 @@
+<div class="navbar navbar-light bg-faded">
+  <%= link_to "BLOG", root_path, class: 'navbar-brand' %>
+
+  <ul class="nav navbar-nav float-xs-right">
+    <li class="nav-item">
+      <a href="#" class="nav-link">Recipes</a>
+    </li>
+    <% if current_user %>
+      <li class="nav-item">
+        <%= link_to 'Log out', logout_path, class: 'nav-link', method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul>
+</div>
