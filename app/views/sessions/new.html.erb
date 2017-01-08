@@ -1,0 +1,10 @@
+<h1>Log in</h1>
+
+<%= simple_form_for @admin, url: login_path do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :email %>
+  <%= f.input :password %>
+
+  <%= f.submit 'Log in' %>
+<% end %>
