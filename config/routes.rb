@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'dashboard' => 'dashboard#index'
     resources :articles
     get 'profile' => 'profiles#edit'
+    patch 'update_email' => 'profiles#update_email'
     post 'update_password' => 'profiles#update_password'
   end
 end

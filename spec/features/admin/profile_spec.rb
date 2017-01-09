@@ -17,25 +17,69 @@ feature 'Profile' do
       visit admin_profile_path
     end
 
+    feature 'Update email' do
+      scenario 'has update email section' do
+        expect(page).to have_selector('h4', text: 'Update email')
+        expect(page).to have_selector('section#update_email')
+      end
+
+      scenario 'fails without password' do
+        within('section#update_email') do
+          fill_in 'admin_email', with: 'test@test.com'
+          click_button 'Update'
+        end
+
+        expect(page).to have_text('Password invalid')
+      end
+
+      scenario 'fails with invalid password' do
+        within('section#update_email') do
+          fill_in 'admin_email', with: 'test@test.com'
+          fill_in 'admin_password', with: 'invalid_password'
+          click_button 'Update'
+        end
+
+        expect(page).to have_text('Password invalid')
+      end
+
+      scenario 'fails with empty email' do
+        within('section#update_email') do
+          fill_in 'admin_email', with: ''
+          fill_in 'admin_password', with: 'password'
+          click_button 'Update'
+        end
+
+        expect(page).to have_text 'Please review the problems below'
+        expect(page).to have_selector('div.admin_email.has-error span.help-block', text: "can't be blank")
+      end
+
+      scenario 'fails with invalid email'
+    end
+
     feature 'Update password' do
 
       scenario 'has update password section' do
         expect(page).to have_selector('h4', text: 'Update password')
+        expect(page).to have_selector('section#update_password')
       end
 
       scenario 'fails without current password' do
-        fill_in 'admin_password', with: 'new_password'
-        fill_in 'admin_password_confirmation', with: 'new_password'
-        click_button 'Update'
+        within('section#update_password') do
+          fill_in 'admin_password', with: 'new_password'
+          fill_in 'admin_password_confirmation', with: 'new_password'
+          click_button 'Update'
+        end
 
         expect(page).to have_text('Invalid password')
       end
 
       scenario 'fails with invalid current password' do
-        fill_in 'admin_current_password', with: 'invalid_password'
-        fill_in 'admin_password', with: 'new_password'
-        fill_in 'admin_password_confirmation', with: 'new_password'
-        click_button 'Update'
+        within('section#update_password') do
+          fill_in 'admin_current_password', with: 'invalid_password'
+          fill_in 'admin_password', with: 'new_password'
+          fill_in 'admin_password_confirmation', with: 'new_password'
+          click_button 'Update'
+        end
 
         expect(page).to have_text('Invalid password')
       end
@@ -59,32 +103,37 @@ feature 'Profile' do
       # end
 
       scenario 'fails without password confirmation' do
-        fill_in 'admin_current_password', with: 'password'
-        fill_in 'admin_password', with: 'new_password'
-        click_button 'Update'
+        within('section#update_password') do
+          fill_in 'admin_current_password', with: 'password'
+          fill_in 'admin_password', with: 'new_password'
+          click_button 'Update'
+        end
 
         expect(page).to have_text('Password and password confirmation do not match')
       end
 
       scenario 'fails if new password and confirmation not match' do
-        fill_in 'admin_current_password', with: 'password'
-        fill_in 'admin_password', with: 'new_password'
-        fill_in 'admin_password_confirmation', with: 'another_password'
-        click_button 'Update'
+        within('section#update_password') do
+          fill_in 'admin_current_password', with: 'password'
+          fill_in 'admin_password', with: 'new_password'
+          fill_in 'admin_password_confirmation', with: 'another_password'
+          click_button 'Update'
+        end
 
         expect(page).to have_text('Password and password confirmation do not match')
       end
 
       scenario 'updates password with valid data' do
-        fill_in 'admin_current_password', with: 'password'
-        fill_in 'admin_password', with: 'new_password'
-        fill_in 'admin_password_confirmation', with: 'new_password'
-        click_button 'Update'
+        within('section#update_password') do
+          fill_in 'admin_current_password', with: 'password'
+          fill_in 'admin_password', with: 'new_password'
+          fill_in 'admin_password_confirmation', with: 'new_password'
+          click_button 'Update'
+        end
 
         expect(page).to have_text('Password updated')
       end
     end
-
 
   end
 end
