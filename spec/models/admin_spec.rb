@@ -51,6 +51,10 @@ RSpec.describe Admin, type: :model do
     expect(second_admin.errors[:email]).to include("has already been taken")
   end
 
+  it 'is invalid if password does not contain symbols' do
+    
+  end
+
   it 'is valid with email, password and password confirmation' do
     admin = FactoryGirl.create(:james_bond)
 

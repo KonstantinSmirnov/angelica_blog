@@ -37,6 +37,13 @@ feature 'Dashboard' do
       expect(page).to have_selector('a.active', text: 'Articles')
     end
 
+    scenario 'has link to profile' do
+      click_link 'Profile'
+
+      expect(current_path).to eq(admin_profile_path)
+      expect(page).to have_selector('a.active', text: 'Profile')
+    end
+
 
     describe 'Dashboard parameters' do
 

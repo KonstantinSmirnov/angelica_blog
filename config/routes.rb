@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboard' => 'dashboard#index'
     resources :articles
+    get 'profile' => 'profiles#edit'
+    post 'update_password' => 'profiles#update_password'
   end
 end
