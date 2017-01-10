@@ -85,6 +85,7 @@ feature 'Profile' do
       end
 
       #TEST FAILS
+      scenario 'fails with empty new password'
       # scenario 'fails without new password' do
       #   fill_in 'admin_current_password', with: 'password'
       #   click_button 'Update'
@@ -93,6 +94,7 @@ feature 'Profile' do
       # end
 
       #TEST FAILS
+      scenario 'fails with new password composed of spacebars'
       # scenario 'fails with spacebar symbols in password' do
       #   fill_in 'admin_current_password', with: 'password'
       #   fill_in 'admin_password', with: '   '

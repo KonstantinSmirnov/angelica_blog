@@ -2,7 +2,6 @@
   <%= f.error_notification %>
 
   <%= f.input :title %>
-  <%= f.input :content %>
 
   <%= f.submit 'Save', class: 'btn btn-outline-primary' %>
   <%= link_to 'Delete', admin_article_path(@article), class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } if @article.persisted? %>

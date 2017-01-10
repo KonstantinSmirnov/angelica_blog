@@ -51,7 +51,6 @@ feature 'Dashboard' do
         visit new_admin_article_path
 
         fill_in 'article_title', with: 'some text'
-        fill_in 'article_content', with: 'some text'
         click_button 'Save'
 
         visit admin_dashboard_path

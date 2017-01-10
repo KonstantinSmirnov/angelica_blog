@@ -11,6 +11,7 @@ feature 'Admin articles' do
 
   describe 'Admin' do
     let(:admin) { FactoryGirl.create(:james_bond) }
+    let(:article) { FactoryGirl.create(:article) }
 
     before(:each) do
       log_in_with(admin.email, 'password')
@@ -32,30 +33,31 @@ feature 'Admin articles' do
       expect(page).to have_text("New article")
     end
 
+    describe 'Index' do
+      scenario 'has edit article link on index page' do
+        article = Article.create(title: 'test')
+        visit admin_articles_path
+
+        click_link 'Edit'
+
+        expect(current_path).to eq(edit_admin_article_path(article))
+      end
+    end
+
     describe 'Create' do
       before(:each) do
         visit new_admin_article_path
       end
 
       scenario 'fails without title' do
-        fill_in 'article_content', with: 'Some content'
         click_button 'Save'
 
         expect(page).to have_text("Please review the problems below")
         expect(page).to have_selector('div.article_title span.help-block', text: "can't be blank")
       end
 
-      scenario 'fails without content' do
+      scenario 'creates new article with title' do
         fill_in 'article_title', with: 'Some title'
-        click_button 'Save'
-
-        expect(page).to have_text("Please review the problems below")
-        expect(page).to have_selector('div.article_content span.help-block', text: "can't be blank")
-      end
-
-      scenario 'creates new article with title and content' do
-        fill_in 'article_title', with: 'Some title'
-        fill_in 'article_content', with: 'Some content'
         click_button 'Save'
 
         expect(page).to have_text('Article has been created')
@@ -63,44 +65,20 @@ feature 'Admin articles' do
     end
 
     describe 'Update' do
-      let(:article) { FactoryGirl.create(:article) }
-
       before(:each) do
         visit edit_admin_article_path(article)
       end
 
-      describe 'Index' do
-        scenario 'has edit article link on index page' do
-          visit admin_articles_path
-
-          click_link 'Edit'
-
-          expect(current_path).to eq(edit_admin_article_path(article))
-        end        
-      end
-
-
       scenario 'fails without title' do
         fill_in 'article_title', with: ''
-        fill_in 'article_content', with: 'Another content'
         click_button 'Save'
 
         expect(page).to have_text('Please review the problems below')
         expect(page).to have_selector('div.article_title span.help-block', text: "can't be blank")
       end
 
-      scenario 'fails without content' do
-        fill_in 'article_title', with: 'Something new here'
-        fill_in 'article_content', with: ''
-        click_button 'Save'
-
-        expect(page).to have_text('Please review the problems below')
-        expect(page).to have_selector('div.article_content span.help-block', text: "can't be blank")
-      end
-
-      scenario 'updates article with new title and content' do
+      scenario 'updates article with new title' do
         fill_in 'article_title', with: 'New article title'
-        fill_in 'article_content', with: 'New article content'
         click_button 'Save'
 
         expect(page).to have_text('Article has been updated')
@@ -108,8 +86,6 @@ feature 'Admin articles' do
     end
 
     describe 'Delete' do
-      let(:article) { FactoryGirl.create(:article) }
-
       scenario 'deletes article' do
         visit edit_admin_article_path(article)
 
