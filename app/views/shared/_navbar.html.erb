@@ -10,18 +10,6 @@
       <li class="nav-item">
         <a href="#" class="nav-link">Home</a>
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">Lifestyle</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">Travel</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">Recipes</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">About me</a>
-      </li>
       <% if current_user %>
         <li class="nav-item">
           <%= link_to 'Admin', admin_dashboard_path, class: "nav-link #{'active' if namespace?('admin')}" %>
@@ -32,4 +20,5 @@
       <% end %>
     </ul>
   </div>
+
 </nav>
