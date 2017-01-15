@@ -61,6 +61,7 @@ gem 'sorcery'
 gem 'simple_form'
 
 gem 'dragonfly', '~> 1.0.12'
+gem "paperclip", "~> 5.0.0"
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'

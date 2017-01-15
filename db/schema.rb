@@ -33,10 +33,13 @@ ActiveRecord::Schema.define(version: 20170115114915) do
   create_table "sections", force: :cascade do |t|
     t.integer  "article_id"
     t.text     "text"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "section_type"
-    t.string   "image_uid"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
 end

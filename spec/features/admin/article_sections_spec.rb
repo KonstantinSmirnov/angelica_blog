@@ -99,8 +99,8 @@ feature 'Article' do
       click_link 'Add image section'
       click_button 'Save'
 
-      #expect(page).to have_text('Please review the problems below')
-      #expect(page).to have_text("can't be blank")
+      expect(page).to have_text('Please review the problems below')
+      expect(page).to have_text("can't be blank")
     end
 
     it 'succeed with image file', js: true do
@@ -110,7 +110,7 @@ feature 'Article' do
       attach_file('Image', Rails.root + "spec/fixtures/images/test_image.png")
       click_button 'Save'
 
-      #expect(page).to have_text('Article has been updated')
+      expect(page).to have_text('Article has been updated')
     end
   end
 

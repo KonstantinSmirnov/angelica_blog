@@ -1,9 +1,9 @@
 class AddImageColumnToSection < ActiveRecord::Migration[5.0]
   def up
-    add_column :sections, :image_uid,  :string
+    add_attachment :sections, :image
   end
 
   def down
-    remove_column :sections, :image_uid 
+    remove_attachment :sections, :image
   end
 end

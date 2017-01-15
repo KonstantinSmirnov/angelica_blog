@@ -86,7 +86,7 @@ RSpec.describe Section, type: :model do
       section = FactoryGirl.build(:image_section, image: '')
 
       expect(section).not_to be_valid
-      expect(section.errors[:image]).to include('the formats allowed are: .jpeg, .jpg, .png, .gif')
+      expect(section.errors[:image]).to include("can't be blank")
     end
 
     it 'is valid with image' do
@@ -96,20 +96,10 @@ RSpec.describe Section, type: :model do
     end
 
     describe 'update' do
-      it 'fails without new image' do
-        section = FactoryGirl.create(:image_section)
-
-        section.image = ''
-        section.save
-
-        expect(section).not_to be_valid
-        expect(section.errors[:image]).to include('the formats allowed are: .jpeg, .jpg, .png, .gif')
-      end
-
       it 'succeed with new image' do
         section = FactoryGirl.create(:image_section)
 
-        section.image = Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/images/another_test_image.png')))
+        section.image = File.open('spec/fixtures/images/another_test_image.png')
         section.save!
 
         expect(section).to be_valid
