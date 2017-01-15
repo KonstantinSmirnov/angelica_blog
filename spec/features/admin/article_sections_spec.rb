@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Article section' do
+feature 'Article' do
   let(:admin) { FactoryGirl.create(:admin) }
   let(:article) { FactoryGirl.create(:article) }
 
@@ -8,8 +8,7 @@ feature 'Article section' do
     log_in_with(admin.email, 'password')
   end
 
-  describe 'Create' do
-
+  context 'add text section' do
     it 'fails without text', js: true do
       visit edit_admin_article_path(article)
 
@@ -20,7 +19,7 @@ feature 'Article section' do
       expect(page).to have_selector('.article_section .form-group span.help-block', text: "can't be blank")
     end
 
-    it 'adds with valid text', js: true do
+    it 'succeed with valid text', js: true do
       visit edit_admin_article_path(article)
       click_link 'Add section'
 
@@ -31,11 +30,9 @@ feature 'Article section' do
       expect(page).to have_text('Article has been updated')
       expect(find_field("article_sections_attributes_0_text").value).to eq('There is some text')
     end
-
   end
 
-  describe 'Update' do
-
+  context 'update text section' do
     it 'fails without text', js: true do
       section = article.sections.create(text: 'There is some text')
       visit edit_admin_article_path(article)
@@ -48,7 +45,7 @@ feature 'Article section' do
       expect(page).to have_selector('.article_section .form-group span.help-block', text: "can't be blank")
     end
 
-    it 'updates with valid text', js: true do
+    it 'succeed with valid text', js: true do
       section = article.sections.create(text: 'There is some text')
       visit edit_admin_article_path(article)
       expect(find_field("article_sections_attributes_0_text").value).to have_text('There is some text')
@@ -63,11 +60,9 @@ feature 'Article section' do
 
       expect(find_field('article_sections_attributes_0_text').value).to eq('There is another text')
     end
-
   end
 
-  describe 'Delete' do
-
+  context 'delete text section' do
     it 'disappears after clicking delete icon', js: true do
       article.sections.create(text: 'There is some text')
       visit edit_admin_article_path(article)
@@ -91,7 +86,6 @@ feature 'Article section' do
       expect(page).to have_text('Article has been updated')
       expect(article.sections.count).to eq(0)
     end
-
-
   end
+
 end
