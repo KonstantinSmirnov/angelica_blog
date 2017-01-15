@@ -5,5 +5,5 @@ class Section < ApplicationRecord
   belongs_to :article
 
   validates :article, presence: true
-  validates :text, presence: true
+  validates :text, presence: true #, :unless => :section_type.text?
 end
