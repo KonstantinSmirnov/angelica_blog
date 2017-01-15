@@ -12,7 +12,7 @@ feature 'Article' do
     it 'fails without text', js: true do
       visit edit_admin_article_path(article)
 
-      click_link 'Add section'
+      click_link 'Add text section'
       click_button 'Save'
 
       expect(page).to have_text('Please review the problems below')
@@ -21,7 +21,7 @@ feature 'Article' do
 
     it 'succeed with valid text', js: true do
       visit edit_admin_article_path(article)
-      click_link 'Add section'
+      click_link 'Add text section'
 
       time = Time.now.to_i
       fill_in "article_sections_attributes_#{time}_text", with: 'There is some text'
@@ -35,6 +35,7 @@ feature 'Article' do
   context 'update text section' do
     it 'fails without text', js: true do
       section = article.sections.create(text: 'There is some text')
+      section.text!
       visit edit_admin_article_path(article)
 
       expect(find_field('article_sections_attributes_0_text').value).to eq('There is some text')
@@ -47,6 +48,7 @@ feature 'Article' do
 
     it 'succeed with valid text', js: true do
       section = article.sections.create(text: 'There is some text')
+      section.text!
       visit edit_admin_article_path(article)
       expect(find_field("article_sections_attributes_0_text").value).to have_text('There is some text')
 
@@ -64,7 +66,8 @@ feature 'Article' do
 
   context 'delete text section' do
     it 'disappears after clicking delete icon', js: true do
-      article.sections.create(text: 'There is some text')
+      section = article.sections.create(text: 'There is some text')
+      section.text!
       visit edit_admin_article_path(article)
 
       expect(find_field('article_sections_attributes_0_text').value).to eq('There is some text')
@@ -75,7 +78,8 @@ feature 'Article' do
     end
 
     it 'destroyed successfully', js: true do
-      article.sections.create(text: 'There is some text')
+      section = article.sections.create(text: 'There is some text')
+      section.text!
       visit edit_admin_article_path(article)
 
       expect(find_field('article_sections_attributes_0_text').value).to eq('There is some text')
@@ -86,6 +90,18 @@ feature 'Article' do
       expect(page).to have_text('Article has been updated')
       expect(article.sections.count).to eq(0)
     end
+  end
+
+  context 'add image section' do
+
+  end
+
+  context 'update image section' do
+
+  end
+
+  context 'delete image section' do
+    
   end
 
 end

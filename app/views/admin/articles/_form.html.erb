@@ -3,17 +3,16 @@
 
   <%= f.input :title, label: false, placeholder: 'Write your article title here' %>
 
-  <%= f.simple_fields_for :sections do |ff| %>
-    <%= render partial: '/admin/sections/section', locals: { ff: ff } %>
-
-  <% end %>
   <div class="" id="sections">
-
+    <%= f.simple_fields_for :sections do |ff| %>
+      <%= render partial: '/admin/sections/section', locals: { ff: ff } %>
+    <% end %>
   </div>
 
   <% if @article.persisted? %>
     <div>
-      <%= link_to 'Add section', new_admin_article_section_path(@article), remote: true, class: 'btn btn-outline-primary' %>
+      <%= link_to 'Add text section', new_admin_article_section_path(@article, section_type: 'text'), remote: true, class: 'btn btn-outline-primary' %>
+      <%= link_to 'Add image section', new_admin_article_section_path(@article, section_type: 'image'), remote: true, class: 'btn btn-outline-primary' %>
     </div>
   <% end %>
 

@@ -1,5 +1,14 @@
-<div class="article_section">
-  <%= ff.input :text, label: false %>
-  <%= ff.hidden_field :_destroy %>
-  <a href="#" class="delete_section">Delete section</a>
-</div>
+<% case ff.object.section_type %>
+<% when 'text' %>
+  <div class="article_section">
+    <%= ff.input :text, label: false %>
+    <%= ff.hidden_field :section_type %>
+    <%= ff.hidden_field :_destroy %>
+    <a href="#" class="delete_section">Delete section</a>
+  </div>
+<% else %>
+  <div class="article_section">
+    <p>This section is not defined yet</p>
+    <%= ff.object.section_type %>
+  </div>
+<% end %>
