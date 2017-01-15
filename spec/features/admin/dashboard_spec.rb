@@ -31,10 +31,10 @@ feature 'Dashboard' do
     end
 
     scenario 'has link to articles list' do
-      click_link 'Articles'
+      click_link 'My articles'
 
       expect(current_path).to eq(admin_articles_path)
-      expect(page).to have_selector('a.active', text: 'Articles')
+      expect(page).to have_selector('a.active', text: 'My articles')
     end
 
     scenario 'has link to profile' do

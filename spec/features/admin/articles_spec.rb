@@ -21,7 +21,7 @@ feature 'Article' do
       visit admin_articles_path
 
       expect(current_path).to eq(admin_articles_path)
-      expect(page).to have_selector("a.active", text: 'Articles')
+      expect(page).to have_selector("a.active", text: 'My articles')
     end
 
     scenario 'has add new article link' do
@@ -112,6 +112,15 @@ feature 'Article' do
 
         expect(page).to have_text('Article has been updated')
         expect(find("select#article_status").value).to eq('published')
+      end
+
+      it 'published and available for visitor on articles page' do
+        article.published!
+        click_link 'Log out'
+
+        visit articles_path
+
+        expect(page).to have_text(article.title)
       end
     end
   end
