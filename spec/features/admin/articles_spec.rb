@@ -95,8 +95,24 @@ feature 'Article' do
       end
     end
 
-    context 'publish article' do
-      it 'succeed to be published'
+    context 'article status' do
+      it 'is draft by default' do
+        article = Article.create(title: 'There is a title')
+
+        visit edit_admin_article_path(article)
+
+        expect(find("select#article_status").value).to eq('draft')
+      end
+
+      it 'can be published' do
+        visit edit_admin_article_path(article)
+
+        select 'published', from: 'article_status'
+        click_button 'Save'
+
+        expect(page).to have_text('Article has been updated')
+        expect(find("select#article_status").value).to eq('published')
+      end
     end
   end
 end

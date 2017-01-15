@@ -1,6 +1,8 @@
 <%= simple_form_for [:admin, @article], :html => { :multipart => true } do |f| %>
   <%= f.error_notification %>
 
+  <%= f.input :status, collection: Article.statuses.keys, default: 0, label: false if @article.persisted? %>
+
   <%= f.input :title, label: false, placeholder: 'Write your article title here' %>
 
   <div class="" id="sections">

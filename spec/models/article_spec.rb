@@ -39,4 +39,18 @@ RSpec.describe Article, type: :model do
     end
   end
 
+  context 'article status' do
+    let(:article) { FactoryGirl.create(:article) }
+
+    it 'is draft by default' do
+      expect(article.status).to eq('draft')
+    end
+
+    it 'can be published' do
+      article.published!
+
+      expect(article.status).to eq('published')
+    end
+  end
+
 end

@@ -43,7 +43,7 @@ class Admin::ArticlesController < AdminController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content,
+    params.require(:article).permit(:title, :status, :content,
                     :sections_attributes => [:id, :text, :_destroy, :section_type, :image])
   end
 end

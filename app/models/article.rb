@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+  enum status: [:draft, :published]
   has_many :sections, dependent: :destroy
 
   validates :title, presence: true
