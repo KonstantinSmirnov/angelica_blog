@@ -9,8 +9,8 @@ class Section < ApplicationRecord
   validates :article, presence: true
   validates :text, presence: true, if: :section_type_text?
   validates :image, presence: true, if: :section_type_image?
-  validates_property :format, of: :image, in: ['jpeg', 'png', 'gif'],
-                      message: "the formats allowed are: .jpeg, .png, .gif", if: :image_changed?
+  validates_property :format, of: :image, in: ['jpeg', 'jpg', 'png', 'gif'],
+                      message: "the formats allowed are: .jpeg, .jpg, .png, .gif", if: :image_changed?
 
   def section_type_text?
     true if self.section_type == 'text'

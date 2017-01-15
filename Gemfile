@@ -60,7 +60,7 @@ end
 gem 'sorcery'
 gem 'simple_form'
 
-gem 'dragonfly', '~> 1.1.1'
+gem 'dragonfly', '~> 1.0.12'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
@@ -73,4 +73,5 @@ group :test do
   gem 'selenium-webdriver'
   gem 'capybara-screenshot'
   gem 'database_cleaner'
+  gem 'launchy'
 end

@@ -86,7 +86,7 @@ RSpec.describe Section, type: :model do
       section = FactoryGirl.build(:image_section, image: '')
 
       expect(section).not_to be_valid
-      expect(section.errors[:image]).to include('the formats allowed are: .jpeg, .png, .gif')
+      expect(section.errors[:image]).to include('the formats allowed are: .jpeg, .jpg, .png, .gif')
     end
 
     it 'is valid with image' do
@@ -103,7 +103,7 @@ RSpec.describe Section, type: :model do
         section.save
 
         expect(section).not_to be_valid
-        expect(section.errors[:image]).to include('the formats allowed are: .jpeg, .png, .gif')
+        expect(section.errors[:image]).to include('the formats allowed are: .jpeg, .jpg, .png, .gif')
       end
 
       it 'succeed with new image' do

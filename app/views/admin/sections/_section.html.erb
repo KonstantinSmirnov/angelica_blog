@@ -8,7 +8,8 @@
   </div>
 <% when 'image' %>
   <div class="article_section">
-    <p>There is an image field</p>
+    <%= image_tag ff.object.image.thumb('200x100#').url if ff.object.image_stored? %>
+    <%= ff.input :image, as: :file %>
     <%= ff.hidden_field :section_type %>
     <%= ff.hidden_field :_destroy %>
     <a href="#" class="delete_section">Delete section</a>

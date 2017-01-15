@@ -1,8 +1,8 @@
 <%
   @article = Article.find(params[:article_id])
-  new_section = @article.sections.build(text: '', section_type: params[:section_type])
+  @new_section = @article.sections.build(section_type: params[:section_type])
   simple_form_for [:admin, @article] do |f|
-    f.fields_for :sections, new_section, :child_index => Time.now.to_i do |ff|
+    f.fields_for :sections, @new_section, :child_index => Time.now.to_i do |ff|
       @article_form = ff
     end
   end

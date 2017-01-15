@@ -93,15 +93,37 @@ feature 'Article' do
   end
 
   context 'add image section' do
+    it 'fails without image file', js: true do
+      visit edit_admin_article_path(article)
 
+      click_link 'Add image section'
+      click_button 'Save'
+
+      #expect(page).to have_text('Please review the problems below')
+      #expect(page).to have_text("can't be blank")
+    end
+
+    it 'succeed with image file', js: true do
+      visit edit_admin_article_path(article)
+
+      click_link 'Add image section'
+      attach_file('Image', Rails.root + "spec/fixtures/images/test_image.png")
+      click_button 'Save'
+
+      #expect(page).to have_text('Article has been updated')
+    end
   end
 
   context 'update image section' do
+    it 'succeed with another image file' do
+      section = FactoryGirl.create(:image_section)
+      visit edit_admin_article_path(section.article)
 
-  end
+      attach_file('Image', Rails.root + "spec/fixtures/images/another_test_image.png")
+      click_button 'Save'
 
-  context 'delete image section' do
-    
+      expect(page).to have_text('Article has been updated')
+    end
   end
 
 end

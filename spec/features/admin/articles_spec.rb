@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-feature 'Admin articles' do
+feature 'Article' do
   describe 'Visitor' do
-    scenario 'does not respond to admin articles path' do
+    scenario 'does not have access to admin articles path' do
       visit admin_articles_path
 
       expect(current_path).to eq(root_path)
@@ -17,7 +17,7 @@ feature 'Admin articles' do
       log_in_with(admin.email, 'password')
     end
 
-    scenario 'responds to admin articles path' do
+    scenario 'has access to admin articles path' do
       visit admin_articles_path
 
       expect(current_path).to eq(admin_articles_path)
@@ -93,6 +93,10 @@ feature 'Admin articles' do
 
         expect(page).to have_text('Article has been deleted')
       end
+    end
+
+    context 'publish article' do
+      it 'succeed to be published'
     end
   end
 end
