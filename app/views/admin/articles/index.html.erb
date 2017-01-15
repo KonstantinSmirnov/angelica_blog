@@ -6,6 +6,8 @@
   </thead>
 </table>
 
-<% @articles.each do |article| %>
-  <%= render :partial => 'article', locals: { :object => article} %>
-<% end %>
+<div class="row">
+  <% @articles.each do |article| %>
+    <%= render :partial => 'article', locals: { :object => article} %>
+  <% end %>
+</div>
