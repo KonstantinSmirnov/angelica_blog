@@ -6,4 +6,10 @@ FactoryGirl.define do
     text "MyText"
     article
   end
+
+  factory :image_section, class: Section do
+    section_type 'image'
+    image Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/images/test_image.png')))
+    article
+  end
 end

@@ -60,6 +60,8 @@ end
 gem 'sorcery'
 gem 'simple_form'
 
+gem 'dragonfly', '~> 1.1.1'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails', '~> 4.4.1'
