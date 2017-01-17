@@ -1,0 +1,5 @@
+<div class="img-fluid">
+  <%= image_tag @article.cover_image.url(:medium), class: 'card-img-top' %>
+</div>
+<h4><%= @article.title %></h4>
+<p><%= @article.description %></p>

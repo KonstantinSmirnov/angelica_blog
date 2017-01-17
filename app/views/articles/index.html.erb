@@ -5,8 +5,8 @@
       <div class="card" style="">
         <%= image_tag article.cover_image.url(:medium), class: 'card-img-top' %>
         <div class="card-block">
-          <h4 class="card-title"><%= article.title %></h4>
-          <a href="#" class="card-text"><%= article.description %></a>
+          <h4 class="card-title"><%= link_to "#{article.title}", article_path(article) %></h4>
+          <%= link_to "#{article.description}", article_path(article) %>
         </div>
       </div>
     </div>

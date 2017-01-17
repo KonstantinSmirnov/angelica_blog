@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
-  resources :articles, only: [:index]
+  resources :articles, only: [:index, :show]
 
   namespace :admin do
     get 'dashboard' => 'dashboard#index'
