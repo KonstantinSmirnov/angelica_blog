@@ -34,7 +34,10 @@ feature 'ARTICLE' do
     end
 
     scenario 'I should have a link to edit article on admin articles page' do
-      article = Article.create(title: 'test')
+      article = Article.create(
+                      title: 'test',
+                      cover_image: File.open('spec/fixtures/images/test_image.png')
+                      )
       visit admin_articles_path
 
       click_link 'Edit'
@@ -48,14 +51,25 @@ feature 'ARTICLE' do
       end
 
       scenario 'it fails without title' do
+        attach_file('Cover image', Rails.root + "spec/fixtures/images/test_image.png")
+
         click_button 'Save'
 
         expect(page).to have_text("Please review the problems below")
         expect(page).to have_selector('div.article_title span.help-block', text: "can't be blank")
       end
 
-      scenario 'it succeeded with title' do
+      scenario 'it fails without cover image' do
         fill_in 'article_title', with: 'Some title'
+        click_button 'Save'
+
+        expect(page).to have_text('Please review the problems below')
+        expect(page).to have_selector('div.article_cover_image span.help-block', text: "can't be blank")
+      end
+
+      scenario 'it succeed with title' do
+        fill_in 'article_title', with: 'Some title'
+        attach_file('Cover image', Rails.root + "spec/fixtures/images/test_image.png")
         click_button 'Save'
 
         expect(page).to have_text('Article has been created')

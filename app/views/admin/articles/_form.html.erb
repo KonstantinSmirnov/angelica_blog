@@ -4,6 +4,8 @@
   <%= f.input :status, collection: Article.statuses.keys, default: 0, label: false if @article.persisted? %>
 
   <%= f.input :title, label: false, placeholder: 'Write your article title here' %>
+  <%= image_tag f.object.cover_image.url(:thumb) unless f.object.cover_image.blank? %>
+  <%= f.input :cover_image, as: :file %>
 
   <div class="" id="sections">
     <%= f.simple_fields_for :sections do |ff| %>

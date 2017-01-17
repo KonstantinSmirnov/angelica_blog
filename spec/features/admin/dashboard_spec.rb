@@ -48,14 +48,11 @@ feature 'Dashboard' do
     describe 'Dashboard parameters' do
 
       scenario 'showes published articles count' do
-        visit new_admin_article_path
-
-        fill_in 'article_title', with: 'some text'
-        click_button 'Save'
+        article = FactoryGirl.create(:article)
 
         visit admin_dashboard_path
 
-        expect(page).to have_text("Articles 1")
+        expect(page).to have_text("Articles #{Article.count}")
       end
     end
 

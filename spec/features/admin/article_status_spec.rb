@@ -31,7 +31,7 @@ feature 'ARTICLE STATUS' do
 
     context 'I change article status' do
       it 'is draft by default' do
-        article = Article.create(title: 'There is a title')
+        article = FactoryGirl.create(:article)
 
         visit edit_admin_article_path(article)
 

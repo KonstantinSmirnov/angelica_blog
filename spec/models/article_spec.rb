@@ -5,16 +5,26 @@ RSpec.describe Article, type: :model do
   describe 'Create' do
     it 'is invalid without title' do
       article = Article.create(
-        title: ''
+        cover_image: File.open('spec/fixtures/images/test_image.png')
       )
 
       expect(article).not_to be_valid
       expect(article.errors[:title]).to include("can't be blank")
     end
 
-    it 'is valid with title' do
+    it 'is invalid without cover image' do
       article = Article.create(
-        title: 'there is a title'
+        title: ''
+      )
+
+      expect(article).not_to be_valid
+      expect(article.errors[:cover_image]).to include("can't be blank")
+    end
+
+    it 'is valid with title and cover image' do
+      article = Article.create(
+        title: 'there is a title',
+        cover_image: File.open('spec/fixtures/images/test_image.png')
       )
       expect(article).to be_valid
     end
