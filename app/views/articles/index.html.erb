@@ -1,5 +1,15 @@
-<h2>there are published articles</h2>
+<br>
+<div class="row">
+  <% @published_articles.each do |article| %>
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="card" style="">
+        <img class="card-img-top img-fluid" src="http://placehold.it/300x200" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title"><%= article.title %></h4>
+          <a href="#" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</a>
+        </div>
+      </div>
+    </div>
 
-<% @published_articles.each do |article| %>
-  <h3><%= article.title %></h3>
-<% end %>
+  <% end %>
+</div>
