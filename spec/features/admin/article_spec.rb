@@ -34,10 +34,7 @@ feature 'ARTICLE' do
     end
 
     scenario 'I should have a link to edit article on admin articles page' do
-      article = Article.create(
-                      title: 'test',
-                      cover_image: File.open('spec/fixtures/images/test_image.png')
-                      )
+      article = FactoryGirl.create(:article)
       visit admin_articles_path
 
       click_link 'Edit'
@@ -52,6 +49,7 @@ feature 'ARTICLE' do
 
       scenario 'it fails without title' do
         attach_file('Cover image', Rails.root + "spec/fixtures/images/test_image.png")
+        fill_in 'article_description', with: 'This is article description'
 
         click_button 'Save'
 
@@ -61,15 +59,26 @@ feature 'ARTICLE' do
 
       scenario 'it fails without cover image' do
         fill_in 'article_title', with: 'Some title'
+        fill_in 'article_description', with: 'This is article description'
         click_button 'Save'
 
         expect(page).to have_text('Please review the problems below')
         expect(page).to have_selector('div.article_cover_image span.help-block', text: "can't be blank")
       end
 
-      scenario 'it succeed with title' do
+      scenario 'it fails without description' do
+        fill_in 'article_title', with: 'Some title'
+        attach_file('Cover image', Rails.root + 'spec/fixtures/images/test_image.png')
+        click_button 'Save'
+
+        expect(page).to have_text('Please review the problems below')
+        expect(page).to have_selector('div.article_description span.help-block', text: "can't be blank")
+      end
+
+      scenario 'it succeed with title, cover image and description' do
         fill_in 'article_title', with: 'Some title'
         attach_file('Cover image', Rails.root + "spec/fixtures/images/test_image.png")
+        fill_in 'article_description', with: 'There is a description'
         click_button 'Save'
 
         expect(page).to have_text('Article has been created')
@@ -89,8 +98,17 @@ feature 'ARTICLE' do
         expect(page).to have_selector('div.article_title span.help-block', text: "can't be blank")
       end
 
-      scenario 'it succeeded with new title' do
+      scenario 'it fails without description' do
+        fill_in 'article_description', with: ''
+        click_button 'Save'
+
+        expect(page).to have_text('Please review the problems below')
+        expect(page).to have_selector('div.article_description span.help-block', text: "can't be blank")
+      end
+
+      scenario 'it succeeded with new title and description' do
         fill_in 'article_title', with: 'New article title'
+        fill_in 'article_description', with: 'new description'
         click_button 'Save'
 
         expect(page).to have_text('Article has been updated')

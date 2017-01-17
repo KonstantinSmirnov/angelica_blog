@@ -6,6 +6,7 @@
   <%= f.input :title, label: false, placeholder: 'Write your article title here' %>
   <%= image_tag f.object.cover_image.url(:thumb) unless f.object.cover_image.blank? %>
   <%= f.input :cover_image, as: :file %>
+  <%= f.input :description, label: false, placeholder: 'Write your description here' %>
 
   <div class="" id="sections">
     <%= f.simple_fields_for :sections do |ff| %>

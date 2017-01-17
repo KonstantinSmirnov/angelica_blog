@@ -17,7 +17,9 @@ feature 'ARTICLE STATUS' do
       visit articles_path
 
       expect(page).to have_text(article.title)
+      expect(page).to have_text(article.description)
     end
+
   end
 
   context 'As an admin' do
