@@ -80,6 +80,7 @@ RSpec.describe Article, type: :model do
 
       expect(article.slug).to include('another-title-')
     end
+
   end
 
   context 'article status' do

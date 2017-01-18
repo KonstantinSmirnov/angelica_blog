@@ -20,7 +20,12 @@ class Article < ApplicationRecord
                       allow_destroy: true
 
   before_validation do
+    self.article_hash = SecureRandom.hex(3) unless self.article_hash
     self.slug = Translit.convert(self.title, :english)
-    self.slug = SecureRandom.hex(4) + '-' + self.slug.downcase.gsub(/[^0-9a-z]/i, '-')
+    self.slug = self.slug.downcase.gsub(/[^0-9a-z]/i, '-') + '-' + self.article_hash
+  end
+
+  def to_param
+    slug
   end
 end

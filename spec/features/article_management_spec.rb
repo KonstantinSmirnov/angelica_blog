@@ -83,6 +83,7 @@ feature 'ARTICLE' do
 
         expect(page).to have_text('Article has been created')
       end
+
     end
 
     describe 'I try to update article' do

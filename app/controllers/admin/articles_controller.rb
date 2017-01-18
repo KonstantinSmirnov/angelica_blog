@@ -18,11 +18,11 @@ class Admin::ArticlesController < AdminController
   end
 
   def edit
-    @article = Article.find(params[:id])
+    @article = Article.find_by_slug(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])
+    @article = Article.find_by_slug(params[:id])
 
     if @article.update_attributes(article_params)
       flash.now[:success] = 'Article has been updated'
@@ -33,7 +33,7 @@ class Admin::ArticlesController < AdminController
   end
 
   def destroy
-    @article = Article.find(params[:id])
+    @article = Article.find_by_slug(params[:id])
 
     @article.destroy
     flash[:success] = 'Article has been deleted'
