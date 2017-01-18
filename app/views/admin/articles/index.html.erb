@@ -7,7 +7,24 @@
 </table>
 
 <div class="row">
-  <% @articles.each do |article| %>
-    <%= render :partial => 'article', locals: { :object => article} %>
-  <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.id %></td>
+          <td><%= article.title %></td>
+          <td><%= article.status %></td>
+          <td><%= link_to 'Edit', edit_admin_article_path(article) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
