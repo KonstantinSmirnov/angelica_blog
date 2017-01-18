@@ -29,6 +29,21 @@ RSpec.describe Article, type: :model do
 
       expect(article).to be_valid
     end
+
+    it 'adds slug from title by default' do
+      article = FactoryGirl.create(:article, title: 'hello world!')
+
+      expect(article).to be_valid
+      expect(article.slug).to include('hello-world-')
+    end
+
+    it 'has slug transliterated to latin symbols' do
+      article = FactoryGirl.create(:article, title: 'Это заголовок статьи!')
+
+      expect(article).to be_valid
+      expect(article.slug).to include('jeto-zagolovok-stat-i-')
+    end
+
   end
 
   describe 'Update' do
@@ -57,6 +72,13 @@ RSpec.describe Article, type: :model do
       article.save
 
       expect(article).to be_valid
+    end
+
+    it 'has slug updated with new title' do
+      article.title = 'Another title!'
+      article.save
+
+      expect(article.slug).to include('another-title-')
     end
   end
 

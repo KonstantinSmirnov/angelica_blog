@@ -63,6 +63,9 @@ gem 'simple_form'
 gem 'dragonfly', '~> 1.0.12'
 gem "paperclip", "~> 5.0.0"
 
+gem 'translit'
+
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails', '~> 4.4.1'
