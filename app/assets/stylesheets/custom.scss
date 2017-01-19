@@ -1,11 +1,12 @@
 $dark: #262626;
 $light: #FFF;
-$background-gray: #E5E5E5;
+$green: #80BA12;
+$backgroundGray: #E5E5E5;
 $footerGray: #858585;
 
 
 body {
-  background-color: $background-gray;
+  background-color: $backgroundGray;
 }
 body > div.container {
   padding-left: 0px;
@@ -18,7 +19,15 @@ body > div.container {
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
+/* NAVBAR */
 
+nav.navbar {
+  background-color: $light;
+  border-bottom: solid 1px $backgroundGray;
+}
+a.nav-link.active {
+  color: $green !important;
+}
 
 /* FOOTER */
 
