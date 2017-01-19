@@ -1,13 +1,32 @@
-
-$white: #FFF;
+$dark: #262626;
+$light: #FFF;
 $background-gray: #E5E5E5;
+$footerGray: #858585;
+
 
 body {
   background-color: $background-gray;
 }
+body > div.container {
+  padding-left: 0px;
+  padding-right: 0px;
+}
 
 .webpage-wrapper {
-  background-color: $white;
+  background-color: $light;
   margin-top: 20px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+
+
+/* FOOTER */
+
+footer {
+  color: $footerGray;
+  background-color: $dark;
+  padding: 10px;
+}
+.footer-author {
+  padding: 10px;
 }

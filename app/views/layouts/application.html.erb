@@ -18,9 +18,7 @@
       <%= render 'shared/messages' %>
       <%= yield %>
       <%= render 'shared/footer' %>
-      <br>
-      <hr>
-      <%= debug(params) if Rails.env.development? %>
     </div>
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
