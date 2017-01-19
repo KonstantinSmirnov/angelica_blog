@@ -1,0 +1,8 @@
+<% case section.section_type %>
+<% when 'text' %>
+  <p><%= section.text %></p>
+<% when 'image' %>
+  <%= image_tag section.image.url(:medium), class: 'img-fluid' %>
+<% else %>
+  <p>There is undefined section</p>
+<% end %>

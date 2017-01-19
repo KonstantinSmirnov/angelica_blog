@@ -2,7 +2,7 @@ $dark: #262626;
 $light: #FFF;
 $green: #80BA12;
 $backgroundGray: #E5E5E5;
-$footerGray: #858585;
+$footerGray: #E5E5E5;
 
 
 body {
@@ -11,12 +11,6 @@ body {
 body > div.container {
   padding-left: 0px;
   padding-right: 0px;
-}
-
-.webpage-wrapper {
-  background-color: $light;
-  margin-top: 20px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 /* NAVBAR */
@@ -38,4 +32,20 @@ footer {
 }
 .footer-author {
   padding: 10px;
+}
+
+/* ARTICLE */
+.article-preview, .article-show {
+  width: 100%;
+  background-color: $light;
+  padding: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  img {
+    margin-bottom: 20px;
+  }
+}
+.cover-image {
+  height: 300px;
+  overflow: hidden;
 }

@@ -1,5 +1,14 @@
-<div class="img-fluid">
-  <%= image_tag @article.cover_image.url(:medium), class: 'card-img-top' %>
+<div class="cover-image">
+  <%= image_tag @article.cover_image.url(:medium), class: '' %>
 </div>
-<h4><%= @article.title %></h4>
-<p><%= @article.description %></p>
+<div class="container">
+  <div class="col-sm-12 col-md-9 article-show">
+    <%= image_tag @article.cover_image.url(:medium), class: 'img-fluid' %>
+    <h4><%= @article.title %></h4>
+    <p><%= @article.description %></p>
+
+    <% @article.sections.each do |section| %>
+      <%= render partial: 'section', locals: { section: section } %>
+    <% end %>
+  </div>
+</div>

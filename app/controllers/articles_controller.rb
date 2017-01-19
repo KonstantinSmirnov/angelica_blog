@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @published_articles = Article.published
+    @published_articles = Article.published.order(created_at: :desc)
   end
 
   def show

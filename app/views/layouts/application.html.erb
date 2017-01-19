@@ -13,12 +13,12 @@
   </head>
 
   <body>
-    <div class="container webpage-wrapper">
-      <%= render 'shared/navbar' %>
-      <%= render 'shared/messages' %>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/messages' %>
+    <div class="">
       <%= yield %>
-      <%= render 'shared/footer' %>
     </div>
+    <%= render 'shared/footer' %>
     <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
