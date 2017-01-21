@@ -13,12 +13,17 @@
       <span class="navbar-text mr-auto">
       </span>
       <ul class="nav navbar-nav">
+        <% @categories.each do |category| %>
+          <li class="nav-item">
+            <%= link_to category.name, '#', class: "nav-link #{ 'active' if controller?('categories') }" %>
+          </li>
+        <% end %>
         <li class="nav-item">
-          <%= link_to 'Articles', articles_path, class: "nav-link #{'active' if controller?('articles')}" %>
+          <%= link_to 'Articles', articles_path, class: "nav-link #{ 'active' if controller?('articles') }" %>
         </li>
         <% if current_user %>
           <li class="nav-item">
-            <%= link_to 'Admin', admin_dashboard_path, class: "nav-link #{'active' if namespace?('admin')}" %>
+            <%= link_to 'Admin', admin_dashboard_path, class: "nav-link #{ 'active' if namespace?('admin') }" %>
           </li>
           <li class="nav-item">
             <%= link_to 'Log out', logout_path, class: 'nav-link', method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -44,6 +44,13 @@ feature 'Dashboard' do
       expect(page).to have_selector('a.active', text: 'Profile')
     end
 
+    scenario 'has link to categories list' do
+      click_link 'Categories'
+
+      expect(current_path).to eq(admin_categories_path)
+      expect(page).to have_selector('a.active', text: 'Categories')
+    end
+
 
     describe 'Dashboard parameters' do
 

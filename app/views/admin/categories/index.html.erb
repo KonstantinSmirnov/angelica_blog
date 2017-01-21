@@ -1,0 +1,28 @@
+<table class="table table-stripped">
+  <thead>
+    <tr>
+      <th><%= link_to 'Add', new_admin_category_path, class: 'btn btn-primary btn-sm' %></th>
+    </tr>
+  </thead>
+</table>
+
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.id %></td>
+          <td><%= category.name %></td>
+          <td><%= link_to 'Edit', edit_admin_category_path(category) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

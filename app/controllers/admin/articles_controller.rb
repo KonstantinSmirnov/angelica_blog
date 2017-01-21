@@ -10,8 +10,8 @@ class Admin::ArticlesController < AdminController
   def create
     @article = Article.new(article_params)
     if @article.save
-      flash.now[:notice] = "Article has been created"
-      render action: 'edit'
+      flash[:notice] = "Article has been created"
+      redirect_to edit_admin_article_path(@article)
     else
       render action: 'new'
     end

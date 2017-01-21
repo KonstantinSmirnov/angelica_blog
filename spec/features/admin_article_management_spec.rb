@@ -84,6 +84,14 @@ feature 'ARTICLE' do
         expect(page).to have_text('Article has been created')
       end
 
+      scenario 'it has a slug as a param' do
+        article = FactoryGirl.create(:article, title: 'there is a title')
+
+        visit article_path(article)
+
+        expect(current_path).to include(article.slug)
+      end
+
     end
 
     describe 'I try to update article' do
