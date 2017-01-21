@@ -10,6 +10,16 @@ feature 'Navbar' do
       expect(page).not_to have_selector("a", text: 'Admin')
     end
 
+    scenario 'I see Home link which leads me to articles index' do
+      visit root_path
+
+      expect(page).to have_selector('a.nav-link.active', text: 'Home')
+
+      visit articles_path
+
+      expect(page).to have_selector('a.nav-link.active', text: 'Home')
+    end
+
   end
 
   context 'As an admin' do
