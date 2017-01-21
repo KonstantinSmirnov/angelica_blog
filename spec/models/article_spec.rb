@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Article, type: :model do
 
+  it 'has a valid factory for article' do
+    article = FactoryGirl.create(:article)
+
+    expect(article).to be_valid
+  end
+
   describe 'Create' do
     it 'is invalid without title' do
       article = FactoryGirl.build(:article, title: '')
