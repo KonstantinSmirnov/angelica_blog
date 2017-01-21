@@ -14,10 +14,18 @@ feature 'ARTICLE STATUS' do
     it 'I can see published article' do
       article.published!
 
-      visit articles_path
+      visit root_path
 
       expect(page).to have_text(article.title)
       expect(page).to have_text(article.description)
+    end
+
+    it 'I can not see [Edit] link for published articles' do
+      article.published!
+
+      visit root_path
+
+      expect(page).not_to have_text('[Edit]')
     end
 
   end
@@ -50,7 +58,16 @@ feature 'ARTICLE STATUS' do
         expect(find("select#article_status").value).to eq('published')
       end
 
+      it 'published article has link [Edit]' do
+        article.published!
+
+        visit root_path
+        click_link '[Edit]'
+
+        expect(current_path).to eq(edit_admin_article_path(article))
+      end
     end
+
   end
 
 end
