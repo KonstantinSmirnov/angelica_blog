@@ -2,7 +2,7 @@
   <div class="row">
     <% @published_articles.each do |article| %>
       <div class="col-sm-12 col-md-6 col-lg-4">
-        <div class="article-preview">
+        <div class="article-preview box-shadow">
           <%= image_tag article.cover_image.url(:medium), class: 'img-fluid' %>
           <h4><%= article.title %></h4>
           <p><%= article.description %></p>
@@ -12,5 +12,5 @@
         </div>
       </div>
     <% end %>
-  </div>  
+  </div>
 </div>
