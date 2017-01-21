@@ -1,10 +1,17 @@
-<h1>Log in</h1>
+<div class="page-min-height">
+  <div class="container">
+    <div class="col-xs-12 col-md-6 offset-md-3 login-form">
+    <h1 class="text-center">Log in</h1>
 
-<%= simple_form_for @admin, url: login_path do |f| %>
-  <%= f.error_notification %>
+      <%= simple_form_for @admin, url: login_path do |f| %>
+        <%= f.error_notification %>
 
-  <%= f.input :email %>
-  <%= f.input :password %>
-
-  <%= f.submit 'Log in', class: 'btn btn-outline-primary' %>
-<% end %>
+        <%= f.input :email %>
+        <%= f.input :password %>
+        <div class="text-center">
+          <%= f.submit 'Log in', class: 'btn btn-outline-primary text-center' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -14,8 +14,13 @@ body > div.container {
   padding-right: 0px;
 }
 
+/* UTILITIES */
 .box-shadow {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+}
+.page-min-height {
+  min-height: 500px;
+  min-height: calc(100vh - 160px);
 }
 
 /* BUTTONS */
@@ -34,8 +39,9 @@ body > div.container {
   color: $green !important;
 }
 .navbar-placeholder {
-  height: 60px;
+  height: 65px;
 }
+
 /* FOOTER */
 
 footer {
@@ -45,6 +51,12 @@ footer {
   display: block;
   position: relative;
   z-index: 100;
+}
+
+/* LOGIN PAGE */
+.login-form {
+  padding-top: 120px;
+  padding-top: calc(100vh / 5);
 }
 
 /* ARTICLE */
