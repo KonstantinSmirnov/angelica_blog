@@ -1,12 +1,14 @@
 <%= simple_form_for [:admin, @article], :html => { :multipart => true } do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :status, collection: Article.statuses.keys, default: 0, label: false if @article.persisted? %>
+  <%= f.input :status, collection: Article.statuses.keys, default: 0 if @article.persisted? %>
 
-  <%= f.input :title, label: false, placeholder: 'Write your article title here' %>
+  <%= f.input :title, placeholder: 'Write your article title here' %>
   <%= image_tag f.object.cover_image.url(:thumb) unless f.object.cover_image.blank? %>
   <%= f.input :cover_image, as: :file %>
-  <%= f.input :description, label: false, placeholder: 'Write your description here' %>
+  <%= f.input :description, placeholder: 'Write your description here' %>
+
+  <h4>Sections</h4>
 
   <div class="" id="sections">
     <%= f.simple_fields_for :sections do |ff| %>
@@ -20,7 +22,7 @@
       <%= link_to 'Add image section', new_admin_article_section_path(@article, section_type: 'image'), remote: true, class: 'btn btn-outline-primary' %>
     </div>
   <% end %>
-
+  <br>
   <%= f.submit 'Save', class: 'btn btn-outline-primary' %>
   <%= link_to 'Delete', admin_article_path(@article), class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } if @article.persisted? %>
 

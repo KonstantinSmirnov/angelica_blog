@@ -15,11 +15,15 @@
       <%= render 'shared/navbar' %>
       <div class="row page-min-height">
         <div class="col-3">
-          <%= render 'shared/admin/navs' %>
+          <div class="container">
+            <%= render 'shared/admin/navs' %>
+          </div>
         </div>
-        <div class="col">
-          <%= render 'shared/messages' %>
-          <%= yield %>
+        <div class="col-9">
+          <div class="container">
+            <%= render 'shared/messages' %>
+            <%= yield %>
+          </div>
         </div>
       </div>
       <%= render 'shared/footer' %>
