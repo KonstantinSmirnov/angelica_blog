@@ -4,6 +4,7 @@ class Article < ApplicationRecord
 
   enum status: [:draft, :published]
   has_many :sections, dependent: :destroy
+  belongs_to :category
 
   validates :title, presence: true
   validates :cover_image, presence: true

@@ -3,6 +3,8 @@
 
   <%= f.input :status, collection: Article.statuses.keys, default: 0 if @article.persisted? %>
 
+  <%= f.input :category_id, collection: Category.all %>
+
   <%= f.input :title, placeholder: 'Write your article title here' %>
   <%= image_tag f.object.cover_image.url(:thumb) unless f.object.cover_image.blank? %>
   <%= f.input :cover_image, as: :file %>

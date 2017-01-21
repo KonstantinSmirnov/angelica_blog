@@ -35,7 +35,15 @@ class Admin::CategoriesController < AdminController
   def destroy
     @category = Category.find_by_slug(params[:id])
 
-    @category.destroy
+    @articles = Article.where(category_id: @category.id)
+
+    @articles.each do |article|
+      article.category = nil
+      article.save
+    end
+
+    @category.delete
+
     flash[:success] = 'Category has been deleted'
     redirect_to admin_categories_path
   end

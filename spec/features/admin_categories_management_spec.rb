@@ -94,6 +94,12 @@ feature 'CATEGORY' do
 
         expect(page).to have_text('Category has been updated')
       end
+
+      scenario 'it does not cause an issue with the same name' do
+        click_button 'Save'
+
+        expect(page).to have_text('Category has been updated')
+      end
     end
 
     context 'I want to delete a category' do

@@ -5,14 +5,7 @@ RSpec.describe Category, type: :model do
   it 'has a valid factory' do
     category = FactoryGirl.create(:category, name: 'Category')
 
-    expect(category.name).to eq('Category')
-    expect(category.slug).to eq('category')
-
-    # it does not work sd validation includes custom validation
-    # which checks if this slug already was used, but in fact it
-    # was used already in this category (another words, with
-    #validation it checks if can create another category with such attributes):
-    # expect(category).to be_valid
+    expect(category).to be_valid
   end
 
   context 'create new category' do
@@ -26,8 +19,7 @@ RSpec.describe Category, type: :model do
     it 'is valid with name' do
       category = Category.create(name: 'Test name')
 
-      expect(category.name).to eq('Test name')
-      expect(category.slug).to eq('test-name')
+      expect(category).to be_valid
     end
 
     it 'is invalid with already existing name' do
@@ -48,6 +40,7 @@ RSpec.describe Category, type: :model do
     it 'has a default slug' do
       category = FactoryGirl.create(:category, name: 'There is a test name')
 
+      expect(category).to be_valid
       expect(category.name).to eq('There is a test name')
       expect(category.slug).to eq('there-is-a-test-name')
     end
@@ -71,6 +64,7 @@ RSpec.describe Category, type: :model do
       category.name = new_name
       category.save
 
+      expect(category).to be_valid
       expect(category.name).to eq(new_name)
       expect(category.slug).to eq('there-is-another-name')
     end
@@ -91,6 +85,7 @@ RSpec.describe Category, type: :model do
       category_two.name = 'tRavel'
       category_two.save
 
+      expect(category_two).not_to be_valid
       expect(category_two.errors[:name]).to include('has already been taken')
     end
 
