@@ -21,5 +21,16 @@ feature 'ARTICLE' do
       expect(current_path).to eq(article_path(article))
       expect(page).to have_text(article.title)
     end
+
+    context 'on article preview' do
+      scenario 'I have a read more button' do
+        article.save!
+
+        visit articles_path
+
+        expect(page).to have_text(article.title)
+        expect(page).to have_selector('a.btn', text: 'Read more')
+      end
+    end
   end
 end
