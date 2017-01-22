@@ -88,9 +88,18 @@ footer {
 }
 .cover-image {
   height: 450px;
+  width: 100%;
   overflow: hidden;
   position: fixed;
   z-index: 5;
+  img {
+    position: fixed;
+    top: -30%;
+    width: 100%;
+    @media (max-width: 1200px) {
+      top: 0;
+    }
+  }
 }
 .cover-image-placeholder {
   display: block;
@@ -98,14 +107,13 @@ footer {
   z-index: 100;
   position: relative;
   .article-title {
-    padding-top: 250px;
+    padding-top: 200px;
     h1 span {
       background-color: $light-opacity;
     }
   }
   .article-description {
     padding-top: 15px;
-    width: 50%;
     p span {
       background-color: $light-opacity;
     }

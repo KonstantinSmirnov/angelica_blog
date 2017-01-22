@@ -1,12 +1,12 @@
 <div class="cover-image">
-  <%= image_tag @article.cover_image.url(:medium), class: 'parallax-background' %>
+  <%= image_tag @article.cover_image.url(:big), class: 'parallax-background' %>
 </div>
 <div class="cover-image-placeholder">
   <div class="container">
     <div class="article-title">
       <h1><span><%= @article.title %></span></h1>
     </div>
-    <div class="article-description">
+    <div class="article-description col-xs-12 col-lg-6">
       <p><span><%= @article.description %></span></p>
     </div>
   </div>
