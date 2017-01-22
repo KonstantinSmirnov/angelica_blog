@@ -12,7 +12,7 @@ class Article < ApplicationRecord
   validates :slug, presence: true
   validates :slug, uniqueness: true
 
-  has_attached_file :cover_image, styles: { big: "1280x1280>", medium: "600x600>", thumb: "100x100>"}, default_url: '/images/:style/missing.png'
+  has_attached_file :cover_image, styles: { big: "1500x1500>", medium: "600x600>", thumb: "100x100>"}, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :cover_image,
                               content_type: /\Aimage\/.*\z/,
                               message: 'Invalid content type.'
