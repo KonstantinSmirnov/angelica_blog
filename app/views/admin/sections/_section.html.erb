@@ -1,22 +1,17 @@
-<% case ff.object.section_type %>
-<% when 'text' %>
-  <div class="article_section">
-    <%= ff.input :text, label: false %>
-    <%= ff.hidden_field :section_type %>
-    <%= ff.hidden_field :_destroy %>
-    <a href="#" class="delete_section">Delete section</a>
-  </div>
-<% when 'image' %>
-  <div class="article_section">
-    <%= image_tag ff.object.image.url(:thumb) unless ff.object.image.blank? %>
-    <%= ff.input :image, as: :file %>
-    <%= ff.hidden_field :section_type %>
-    <%= ff.hidden_field :_destroy %>
-    <a href="#" class="delete_section">Delete section</a>
-  </div>
-<% else %>
-  <div class="article_section">
-    <p>This section is not defined yet</p>
-    <%= ff.object.section_type %>
-  </div>
-<% end %>
+<div class="article_section">
+  <% case ff.object.section_type %>
+  <% when 'text' %>
+      <%= ff.input :text, label: false, input_html: { class: 'textarea-resizable' } %>
+      <%= ff.hidden_field :section_type %>
+      <%= ff.hidden_field :_destroy %>
+  <% when 'image' %>
+      <%= image_tag ff.object.image.url(:thumb) unless ff.object.image.blank? %>
+      <%= ff.input :image, as: :file %>
+      <%= ff.hidden_field :section_type %>
+      <%= ff.hidden_field :_destroy %>
+  <% else %>
+      <p>This section is not defined yet</p>
+      <%= ff.object.section_type %>
+  <% end %>
+  <a href="#" class="delete_section">Delete section</a>
+</div>
