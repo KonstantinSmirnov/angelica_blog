@@ -8,7 +8,7 @@
   <%= f.input :title, placeholder: 'Write your article title here' %>
   <%= image_tag f.object.cover_image.url(:thumb) unless f.object.cover_image.blank? %>
   <%= f.input :cover_image, as: :file %>
-  <%= f.input :description, placeholder: 'Write your description here' %>
+  <%= f.input :description, placeholder: 'Write your description here', input_html: { class: 'textarea-resizable' } %>
 
   <h4>Sections</h4>
 
