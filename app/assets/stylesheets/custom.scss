@@ -99,8 +99,14 @@ footer {
     position: fixed;
     top: -30%;
     width: 100%;
-    @media (max-width: 1200px) {
+    @media (max-width: 1400px) {
+      top: 60px;
+    }
+    @media (max-width: 768px) {
       top: 0;
+      height: 100%;
+      width: auto;
+      left: -50%;
     }
   }
 }
@@ -111,6 +117,9 @@ footer {
   position: relative;
   .article-title {
     padding-top: 200px;
+    @media (max-width: 1200px) {
+      padding-top: 50px;
+    }
     h1 span {
       background-color: $light-opacity;
     }
