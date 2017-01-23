@@ -20,6 +20,11 @@ body > div.container {
 .box-shadow {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
 }
+.box-shadow-hover {
+  &:hover {
+    box-shadow: 0 1px 18px rgba(0, 0, 0, 0.46);
+  }
+}
 .white-box {
   background-color: $light;
 }
@@ -81,6 +86,7 @@ footer {
     margin-bottom: 20px;
   }
 }
+
 .article-container {
   display: block;
   background-color: $backgroundGray;

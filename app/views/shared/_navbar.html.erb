@@ -1,13 +1,13 @@
 <nav class="navbar navbar-toggleable-md navbar-light navbar-custom fixed-top bg-faded box-shadow">
-  <div class="container">
+
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <%= link_to root_path, class: 'navbar-brand' do %>
       <%= image_tag '/images/logo.jpg', height: '40' %>
+      Yagodi blog
     <% end %>
-    <%= link_to 'Yagodi blog', root_path, class: 'navbar-brand' %>
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <span class="navbar-text mr-auto">
@@ -31,7 +31,6 @@
         <% end %>
       </ul>
     </div>
-  </div>
 </nav>
 <div class="navbar-placeholder">
 

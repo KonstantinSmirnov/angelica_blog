@@ -1,5 +1,5 @@
-<div class="col-sm-12 col-md-6 col-lg-4">
-  <div class="article-preview box-shadow">
+<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+  <div class="article-preview box-shadow box-shadow-hover">
     <%= image_tag article.cover_image.url(:medium), class: 'img-fluid' %>
     <h4><%= article.title %> <%= link_to '[Edit]', edit_admin_article_path(article) if current_user %></h4>
     <p><%= article.description %></p>
