@@ -23,6 +23,25 @@ feature 'ARTICLE' do
         expect(page).to have_selector('a.btn', text: 'Read more')
       end
 
+      scenario 'just published article has 0 views' do
+        article.save!
+
+        visit articles_path
+
+        expect(page).to have_selector('i.fa.fa-eye', text: '0')
+      end
+
+      scenario 'published article has views counter' do
+        article.save!
+
+        visit article_path(article)
+        visit article_path(article)
+        visit article_path(article)
+
+        visit articles_path
+        expect(page).to have_selector('i.fa.fa-eye', text: '3')
+      end
+
       scenario 'I can visit published article' do
         article.save!
 
