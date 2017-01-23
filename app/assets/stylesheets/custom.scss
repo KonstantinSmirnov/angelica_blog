@@ -91,6 +91,7 @@ footer {
   }
 }
 .card-columns {
+  margin-top: 10px;
   @media (min-width: 1400px) {
     column-count: 4;
   }
@@ -107,6 +108,8 @@ footer {
 .card {
   border-style: none;
   border-radius: 0;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .article-container {
