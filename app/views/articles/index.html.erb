@@ -1,5 +1,6 @@
+<div class="top-margin"></div>
 <div class="container-fluid">
-  <div class="row">
+  <div class="card-columns">
     <% @published_articles.each do |article| %>
       <%= render partial: '/articles/article_preview', locals: { article: article } %>
     <% end %>
