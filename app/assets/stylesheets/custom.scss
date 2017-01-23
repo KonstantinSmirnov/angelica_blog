@@ -150,7 +150,8 @@ footer {
       top: 0;
       height: 100%;
       width: auto;
-      left: -50%;
+      display: block;
+      margin: 0 auto;
     }
   }
 }
