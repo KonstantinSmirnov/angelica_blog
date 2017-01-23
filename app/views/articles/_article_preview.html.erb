@@ -1,4 +1,4 @@
-<div class="card box-shadow box-shadow-hover">
+<div class="card box-border">
   <%= image_tag article.cover_image.url(:medium), class: 'img-fluid' %>
   <div class="card-block">
     <h4 class="card-title"><%= article.title %> <%= link_to '[Edit]', edit_admin_article_path(article) if current_user %></h4>
