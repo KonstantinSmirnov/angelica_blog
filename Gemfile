@@ -60,7 +60,6 @@ end
 gem 'sorcery'
 gem 'simple_form'
 
-gem 'dragonfly', '~> 1.0.12'
 gem "paperclip", "~> 5.0.0"
 
 gem 'translit'
