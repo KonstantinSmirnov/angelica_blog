@@ -78,3 +78,12 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
 end
+
+# DEPLOY
+group :development do
+  gem 'capistrano-rbenv',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano',         require: false
+  gem 'capistrano3-puma',   require: false
+end
