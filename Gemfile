@@ -87,3 +87,6 @@ group :development do
   gem 'capistrano',         require: false
   gem 'capistrano3-puma',   require: false
 end
+
+# environment variables
+gem 'dotenv-rails'
