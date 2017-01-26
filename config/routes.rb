@@ -20,4 +20,9 @@ Rails.application.routes.draw do
     patch 'update_email' => 'profiles#update_email'
     post 'update_password' => 'profiles#update_password'
   end
+
+  match "/404", :to => 'errors#error_404', via: :all
+  match "/500", :to => 'errors#error_500', via: :all
+
+  get '*url' => 'errors#error_404'
 end

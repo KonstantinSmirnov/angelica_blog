@@ -4,7 +4,10 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find_by_slug(params[:id])
-    @article.increment!(:views)
+    if @article = Article.published.find_by_slug(params[:id])
+      @article.increment!(:views)
+    else
+      raise ActiveRecord::RecordNotFound
+    end
   end
 end

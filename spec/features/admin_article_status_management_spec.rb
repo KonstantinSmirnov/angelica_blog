@@ -5,10 +5,17 @@ feature 'ARTICLE STATUS' do
   context 'As a visitor' do
     let(:article) { FactoryGirl.create(:article) }
 
-    it 'I can not see not published article' do
+    it 'I can not see not published article on home page' do
       visit articles_path
 
       expect(page).not_to have_text(article.title)
+    end
+
+    it 'I can not see not published article' do
+      visit article_path(article)
+
+      expect(page).not_to have_text(article.title)
+      expect(page).to have_selector('h1', text: '404 page')
     end
 
     it 'I can see published article' do

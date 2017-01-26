@@ -3,7 +3,13 @@ class ApplicationController < ActionController::Base
 
   before_action :initialize_app
 
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+
   def initialize_app
     @categories = Category.all
+  end
+
+  def render_404
+    render :template => "errors/error_404", :status => 404
   end
 end
