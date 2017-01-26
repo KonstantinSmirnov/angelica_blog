@@ -53,11 +53,11 @@ feature 'ERROR PAGES' do
     end
   end
 
-  context 'I will see 500 page if I visit' do
+  context 'I will see default 500 page if I visit' do
     scenario '/500' do
       visit '/500'
 
-      expect(page).to have_selector('h1', text: '500 page')
+      expect(page).to have_selector('h1', text: "We're sorry, but something went wrong")
     end
   end
 
@@ -73,7 +73,7 @@ feature 'ERROR PAGES' do
     scenario "header '500 page'" do
       visit '/500'
 
-      expect(page).to have_selector('h1', text: '500 page')
+      expect(page).to have_selector('h1', text: "We're sorry, but something went wrong")
     end
   end
 end

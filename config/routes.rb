@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   end
 
   match "/404", :to => 'errors#error_404', via: :all
-  match "/500", :to => 'errors#error_500', via: :all
 
   get '*url' => 'errors#error_404'
 end
