@@ -42,6 +42,26 @@ feature 'ARTICLE' do
         expect(page).to have_selector('i.fa.fa-eye', text: '3')
       end
 
+      scenario 'published article has publication date' do
+        article.save!
+        datetime = article.published_at
+
+        visit articles_path
+
+        expect(page).to have_selector('small.text-muted', text: datetime.strftime('%d %b %Y'))
+      end
+
+      scenario 'published article has publication date (2 days ago test)' do
+        article.save!
+        datetime = 2.days.ago
+        article.published_at = datetime
+        article.save!
+
+        visit articles_path
+
+        expect(page).to have_selector('small.text-muted', text: datetime.strftime('%d %b %Y'))
+      end
+
       scenario 'I can visit published article' do
         article.save!
 

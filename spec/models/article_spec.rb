@@ -94,12 +94,31 @@ RSpec.describe Article, type: :model do
 
     it 'is draft by default' do
       expect(article.status).to eq('draft')
+      expect(article.published_at).to eq(nil)
     end
 
     it 'can be published' do
       article.published!
 
       expect(article.status).to eq('published')
+      expect(article.published_at).not_to eq(nil)
+    end
+
+    it 'can be unpublished' do
+      article.published!
+      article.draft!
+
+      expect(article.status).to eq('draft')
+      expect(article.published_at).to eq(nil)
+    end
+
+    it 'publication date does not update if already published' do
+      article.published!
+      datetime = article.published_at
+      article.published!
+
+      expect(article.status).to eq('published')
+      expect(article.published_at).to eq(datetime)
     end
   end
 

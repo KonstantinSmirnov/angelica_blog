@@ -2,7 +2,7 @@
   <%= image_tag article.cover_image.url(:medium), class: 'img-fluid' %>
   <div class="card-block">
     <h4 class="card-title"><%= article.title %> <%= link_to '[Edit]', edit_admin_article_path(article) if current_user %></h4>
-    <small class="text-muted"><%= article.created_at.strftime('%d %b %Y') %> | <i class="fa fa-eye"> <%= article.views %></i></small>
+    <small class="text-muted"><%= article.published_at.strftime('%d %b %Y') %> | <i class="fa fa-eye"> <%= article.views %></i></small>
     <p class="card-text"><%= article.description %></p>
     <div class="text-center">
       <%= link_to "Read more", article_path(article), class: 'btn btn-outline-primary' %>

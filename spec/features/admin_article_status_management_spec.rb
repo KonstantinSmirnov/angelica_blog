@@ -46,6 +46,7 @@ feature 'ARTICLE STATUS' do
         visit edit_admin_article_path(article)
 
         expect(find("select#article_status").value).to eq('draft')
+        expect(page).not_to have_selector('small.text-muted', text: 'Published')
       end
 
       it 'is published' do
@@ -56,6 +57,7 @@ feature 'ARTICLE STATUS' do
 
         expect(page).to have_text('Article has been updated')
         expect(find("select#article_status").value).to eq('published')
+        expect(page).to have_selector('small.text-muted', text: "Published ")
       end
 
       it 'published article has link [Edit]' do
