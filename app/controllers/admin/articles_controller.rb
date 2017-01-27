@@ -13,7 +13,7 @@ class Admin::ArticlesController < AdminController
       flash[:notice] = "Article has been created"
       redirect_to edit_admin_article_path(@article)
     else
-      render action: 'new'
+      render 'new'
     end
   end
 
@@ -25,10 +25,10 @@ class Admin::ArticlesController < AdminController
     @article = Article.find_by_slug(params[:id])
 
     if @article.update_attributes(article_params)
-      flash.now[:success] = 'Article has been updated'
-      render action: 'edit'
+      flash[:success] = 'Article has been updated'
+      redirect_to edit_admin_article_path(@article)
     else
-      render action: 'edit'
+      render 'edit'
     end
   end
 

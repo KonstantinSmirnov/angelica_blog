@@ -56,6 +56,17 @@ feature 'ARTICLE' do
         expect(page).to have_text("Please review the problems below")
         expect(page).to have_selector('div.article_title span.help-block', text: "can't be blank")
       end
+      
+      scenario 'it fails with a title which consists only spacebars' do
+        attach_file('Cover image', Rails.root + "spec/fixtures/images/test_image.png")
+        fill_in 'article_title', with: '   '
+        fill_in 'article_description', with: 'This is article description'
+        
+        click_button 'Save'
+        
+        expect(page).to have_text("Please review the problems below")
+        expect(page).to have_selector('div.article_title span.help-block', text: "can't be blank")
+      end
 
       scenario 'it fails without cover image' do
         fill_in 'article_title', with: 'Some title'
@@ -103,6 +114,24 @@ feature 'ARTICLE' do
         fill_in 'article_title', with: ''
         click_button 'Save'
 
+        expect(page).to have_text('Please review the problems below')
+        expect(page).to have_selector('div.article_title span.help-block', text: "can't be blank")
+      end
+      
+      scenario 'it fails without title for repeated saving' do
+        fill_in 'article_title', with: ''
+        click_button 'Save'
+        click_button 'Save'
+        
+        expect(page).to have_text('Please review the problems below')
+        expect(page).to have_selector('div.article_title span.help-block', text: "can't be blank")
+      end
+      
+      scenario 'it fails with a title which consists of only spacebars and repeated saving' do
+        fill_in 'article_title', with: '   '
+        click_button 'Save'
+        click_button 'Save'
+        
         expect(page).to have_text('Please review the problems below')
         expect(page).to have_selector('div.article_title span.help-block', text: "can't be blank")
       end

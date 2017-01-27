@@ -15,6 +15,13 @@ RSpec.describe Article, type: :model do
       expect(article).not_to be_valid
       expect(article.errors[:title]).to include("can't be blank")
     end
+    
+    it 'is invalid with title consisting of spacebars' do
+      article = FactoryGirl.build(:article, title: '   ')
+      
+      expect(article).not_to be_valid
+      expect(article.errors[:title]).to include("can't be blank")
+    end
 
     it 'is invalid without cover image' do
       article = FactoryGirl.build(:article, cover_image: '')
@@ -62,6 +69,14 @@ RSpec.describe Article, type: :model do
       expect(article).not_to be_valid
       expect(article.errors[:title]).to include("can't be blank")
     end
+    
+    it 'can not update with title consisting of spacebars' do
+      article.title = '   '
+      article.save
+      
+      expect(article).not_to be_valid
+      expect(article.errors[:title]).to include("can't be blank")
+    end
 
     it 'can not update with empty description' do
       article.description = ''
@@ -85,6 +100,32 @@ RSpec.describe Article, type: :model do
       article.save
 
       expect(article.slug).to include('another-title-')
+    end
+    
+    it 'slug not updated if title is empty' do
+      article.title = 'there is a title'
+      article.save
+      
+      slug = article.slug
+      
+      article.title = ''
+      article.save
+      
+      expect(article).not_to be_valid
+      expect(article.slug).to eq(slug)
+    end
+    
+    it 'slug not updated if title is consisting of spacebars' do
+      article.title = 'there is a title'
+      article.save
+      
+      slug = article.slug
+      
+      article.title = '   '
+      article.save
+      
+      expect(article).not_to be_valid
+      expect(article.slug).to eq(slug)
     end
 
   end

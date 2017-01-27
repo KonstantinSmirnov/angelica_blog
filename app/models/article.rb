@@ -24,10 +24,12 @@ class Article < ApplicationRecord
 
   before_validation do
     #create slug
-    self.article_hash = SecureRandom.hex(3) unless self.article_hash
-    self.slug = Translit.convert(self.title, :english)
-    self.slug = self.slug.downcase.gsub(/[^0-9a-z]/i, '-') + '-' + self.article_hash
-
+    unless self.title =~ /^\s*$/
+      self.article_hash = SecureRandom.hex(3) unless self.article_hash
+      self.slug = Translit.convert(self.title, :english)
+      self.slug = self.slug.downcase.gsub(/[^0-9a-z]/i, '-') + '-' + self.article_hash
+    end
+    
     #update publication date
     if self.published?
       self.published_at = DateTime.now if self.published_at == nil
