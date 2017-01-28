@@ -1,7 +1,11 @@
 <div class="container-fluid">
-  <div class="card-columns">
-    <% @published_articles.each do |article| %>
-      <%= render partial: '/articles/article_preview', locals: { article: article } %>
-    <% end %>
-  </div>
+  <% if @published_articles.any? %>
+    <div class="card-columns">
+      <% @published_articles.each do |article| %>
+        <%= render partial: '/articles/article_preview', locals: { article: article } %>
+      <% end %>
+    </div>
+  <% else %>
+    <h1>There are no articles yet =(</h1>
+  <% end %>
 </div>

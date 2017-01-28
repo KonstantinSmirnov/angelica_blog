@@ -3,12 +3,27 @@ require 'rails_helper'
 feature 'CATEGORY' do
 
   context 'As a visitor' do
+    let!(:category) { FactoryGirl.create(:category) }
     scenario 'I can see created category in navbar' do
-      category = FactoryGirl.create(:category, name: 'Travel')
-
       visit root_path
 
       expect(page).to have_selector('nav.navbar a.nav-link', text: category.name)
+    end
+
+    scenario 'I can see published articles in this category' do
+      article = FactoryGirl.create(:article, status: 'published')
+      article.category = category
+      article.save
+
+      visit category_path(category)
+
+      expect(page).to have_text(article.title)
+    end
+
+    scenario 'I see default text if has no articles' do
+      visit category_path(category)
+
+      expect(page).to have_text('There are no articles yet')
     end
   end
 
