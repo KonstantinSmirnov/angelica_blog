@@ -15,8 +15,15 @@ RSpec.describe About, type: :model do
       expect(about.errors[:text]).to include("can't be blank")
     end
 
-    it 'is valid with text' do
-      about = FactoryGirl.create(:about, text: 'some text')
+    it 'is invalid without image' do
+      about = FactoryGirl.build(:about, image: '')
+
+      expect(about).not_to be_valid
+      expect(about.errors[:image]).to include("can't be blank")
+    end
+
+    it 'is valid with text and image' do
+      about = FactoryGirl.create(:about)
 
       expect(about).to be_valid
     end

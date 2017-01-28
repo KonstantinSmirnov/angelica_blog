@@ -1,7 +1,10 @@
 <%= simple_form_for [:admin, @about_page], url: admin_about_path do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :text %>
+  <%= f.input :text, input_html: { class: 'textarea-resizable' } %>
+
+  <%= image_tag f.object.image.url(:thumb) unless f.object.image.blank? %>
+  <%= f.input :image, as: :file %>
 
   <%= f.submit 'Save', class: 'btn btn-outline-primary' %>
   <%= link_to 'Delete', admin_about_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>

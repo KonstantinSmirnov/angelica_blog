@@ -23,7 +23,7 @@ feature 'ARTICLE STATUS' do
 
       visit root_path
 
-      expect(page).to have_text(article.title)
+      expect(page).to have_text(article.title.upcase)
       expect(page).to have_text(article.description)
     end
 

@@ -1,4 +1,7 @@
+//LOGO
 @import "https://fonts.googleapis.com/css?family=Sacramento";
+//MAIN FONT
+@import "https://fonts.googleapis.com/css?family=Roboto";
 @import "bootstrap";
 
 $dark: #262626;
@@ -9,13 +12,16 @@ $gray: #D9D9D9;
 $backgroundGray: #F7F7F7;
 $footerGray: #E5E5E5;
 
-
 body {
   background-color: $backgroundGray;
 }
 body > div.container {
   padding-left: 0px;
   padding-right: 0px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
 }
 
 /* UTILITIES */
@@ -44,9 +50,11 @@ span.help-block {
   color: red;
 }
 
-/* BUTTONS */
+/* RADIUS 0 */
 
-.btn, .nav-pills .nav-item a {
+.btn,
+.nav-pills .nav-item a,
+.form-control {
   border-radius: 0;
 }
 
@@ -239,4 +247,14 @@ footer {
      position: absolute;
      bottom: 0px;
      background:white;
+}
+
+// ABOUT PAGE
+
+#about_page_about {
+  margin-top: 15px;
+}
+
+#about_page_contact {
+
 }

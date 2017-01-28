@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :about do
     text 'There is some text'
+    image { File.open('spec/fixtures/images/test_image.png') }
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'ABOUT PAGE' do
 
-  context 'As a visitor I try to visit About page' do
+  context 'As a visitor I go to About page' do
     scenario 'it fails if is not created' do
       visit '/about'
 
@@ -18,6 +18,77 @@ feature 'ABOUT PAGE' do
       expect(current_path).to eq(about_path)
       expect(page).to have_selector('.nav-item a.nav-link.active', text: 'About')
     end
+
+    context 'it has About me section' do
+      let!(:about_page) { FactoryGirl.create(:about) }
+
+      scenario 'has image' do
+        visit '/about'
+
+        expect(page).to have_css("img[src*='#{about_page.image.url(:medium)}']")
+      end
+      scenario 'has text' do
+        visit '/about'
+
+        expect(page).to have_text(about_page.text)
+      end
+    end
+
+    context 'can send a email' do
+      let!(:about_page) { FactoryGirl.create(:about) }
+      before(:each) do
+        visit '/about'
+      end
+      scenario 'Has Contact me title' do
+        expect(page).to have_selector('h1', text: 'Write a letter')
+      end
+
+      scenario 'succeeed with valid data' do
+        fill_in 'contact_form_email', with: 'test@test.com'
+        fill_in 'contact_form_name', with: 'Test user'
+        fill_in 'contact_form_message', with: 'there is a test message'
+        click_button 'Submit'
+
+        expect(page).to have_text('Your message has been sent')
+      end
+      scenario 'fails without email' do
+        fill_in 'contact_form_email', with: '  '
+        fill_in 'contact_form_name', with: 'Test user'
+        fill_in 'contact_form_message', with: 'There is a test message'
+        click_button 'Submit'
+
+        expect(page).to have_selector('div.contact_form_email span.help-block', text: "can't be blank")
+      end
+      scenario 'fails with invalid email' do
+        fill_in 'contact_form_email', with: 'test@te@st.com'
+        fill_in 'contact_form_name', with: 'User name'
+        fill_in 'contact_form_message', with: 'There is a test message'
+        click_button 'Submit'
+
+        expect(page).to have_selector('div.contact_form_email span.help-block', text: "email format is invalid")
+      end
+      scenario 'fails without name' do
+        fill_in 'contact_form_email', with: 'test@test.com'
+        fill_in 'contact_form_name', with: '   '
+        fill_in 'contact_form_message', with: 'There is a test message'
+        click_button 'Submit'
+
+        expect(page).to have_selector('div.contact_form_name span.help-block', text: "can't be blank")
+      end
+      scenario 'fails without message' do
+        fill_in 'contact_form_email', with: 'test@test.com'
+        fill_in 'contact_form_name', with: 'Test user'
+        fill_in 'contact_form_message', with: '   '
+        click_button 'Submit'
+
+        expect(page).to have_selector('div.contact_form_message span.help-block', text: "can't be blank")
+      end
+      scenario 'email is sent'
+      scenario 'email contents entered data'
+      scenario 'email is sent to admin email'
+
+    end
+
   end
 
   context 'As a visitor I try to admin about page' do
@@ -68,17 +139,30 @@ feature 'ABOUT PAGE' do
       visit edit_admin_about_path
       click_link 'Create'
 
+      attach_file('Image', Rails.root + "spec/fixtures/images/test_image.png")
       click_button 'Save'
 
       expect(page).to have_text('Please review the problems below')
       expect(page).to have_selector('div.about_text span.help-block', text: "can't be blank")
     end
 
-    scenario 'it succeed with valid text' do
+    scenario 'it fails without image' do
       visit edit_admin_about_path
 
       click_link 'Create'
       fill_in 'about_text', with: 'there is some text'
+      click_button 'Save'
+
+      expect(page).to have_text('Please review the problems below')
+      expect(page).to have_selector('div.about_image span.help-block', text: "can't be blank")
+    end
+
+    scenario 'it succeed with valid text and image' do
+      visit edit_admin_about_path
+
+      click_link 'Create'
+      fill_in 'about_text', with: 'there is some text'
+      attach_file('Image', Rails.root + "spec/fixtures/images/test_image.png")
       click_button 'Save'
 
       expect(page).to have_text('About page has been created')

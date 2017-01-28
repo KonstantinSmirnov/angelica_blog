@@ -39,6 +39,6 @@ class Admin::AboutsController < AdminController
   private
 
   def about_params
-    params.require(:about).permit(:text)
+    params.require(:about).permit(:text, :image)
   end
 end

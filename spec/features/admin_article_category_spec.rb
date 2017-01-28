@@ -13,7 +13,7 @@ feature 'ARTICLE' do
 
         visit category_path(category)
 
-        expect(page).to have_text(article.title)
+        expect(page).to have_text(article.title.upcase)
       end
     end
 

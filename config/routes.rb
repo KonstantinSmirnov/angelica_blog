@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   get 'about' => 'abouts#show'
+  post 'about' => 'abouts#send_letter'
 
   resources :articles, only: [:index, :show]
   resources :categories, only: [:show]
@@ -26,6 +27,6 @@ Rails.application.routes.draw do
   match "/404", :to => 'errors#error_404', via: :all
 
   get '/sitemap.xml', :to => 'sitemap#show', :format => 'xml', :as => :sitemap
-  
+
   get '*url' => 'errors#error_404'
 end

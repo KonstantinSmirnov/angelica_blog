@@ -17,7 +17,7 @@ feature 'CATEGORY' do
 
       visit category_path(category)
 
-      expect(page).to have_text(article.title)
+      expect(page).to have_text(article.title.upcase)
     end
 
     scenario 'I see default text if has no articles' do

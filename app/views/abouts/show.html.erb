@@ -1,7 +1,33 @@
 <div class="page-min-height">
   <div class="container">
-    <h1>This is about page</h1>
-
-    <%= @about_page.text %>
+    <section id="about_page_about">
+      <div class="row">
+        <div class="col-md-9">
+          <h1>About me</h1>
+          <p><%= @about_page.text %></p>
+        </div>
+        <div class="col-md-3">
+          <%= image_tag @about_page.image.url(:medium), class: 'img-fluid', id: 'about_image' %>
+        </div>
+      </div>
+    </section>
+    <section id="about_page_contact">
+      <h1>Write a letter</h1>
+      <%= simple_form_for @contact_form, url: about_path do |f| %>
+        <div class="row">
+          <div class="col-sm-4">
+            <%= f.input :email, require: true %>
+            <%= f.input :name %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.input :message, as: :text, input_html: { class: 'textarea-resizable', rows: 5} %>
+            <div class="float-left">
+              <%= f.submit 'Submit', class: 'btn btn-outline-primary' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </section>
   </div>
 </div>
+<br>
