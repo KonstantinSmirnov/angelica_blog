@@ -32,3 +32,6 @@ test
 
 # remove Paperclip images folder
 public/system/
+
+# remove .env files
+.env

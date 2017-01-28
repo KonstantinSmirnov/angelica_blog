@@ -1,0 +1,19 @@
+<div class="share-buttons-list">
+  <a href=
+      <%= "https://twitter.com/intent/tweet?" +
+      "text=#{URI.encode(object.title)}" +
+      "&url=#{article_url(object)}" +
+      "&hashtags=" +
+      "&via=" %>
+  ><span class="share-button twitter">
+    <i class="fa fa-twitter"></i>
+  </span></a>
+  <span class="share-button facebook" onclick='share_facebook(
+          "<%= "#{article_url(object)}" %>",
+          "<%= "#{object.title}" %>",
+          "<%= "#{object.description}" %>",
+          "<%= "#{URI(request.base_url)}#{object.cover_image.url(:medium)}" unless object.cover_image.nil? %>",
+          "<%= URI(request.base_url) %>")'>
+    <i class="fa fa-facebook"></i>
+  </span>
+</div>

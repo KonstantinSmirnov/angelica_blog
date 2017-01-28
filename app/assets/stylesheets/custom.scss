@@ -193,6 +193,40 @@ footer {
   }
 }
 
+// SHARE BUTTONS
+.share-buttons-list {
+  display: block;
+  .share-button {
+    display: inline-block;
+    align:right;
+    font-size: 1.3em;
+    background-color: $dark;
+    -webkit-transition:background-color 0.2s ease-in-out;
+    -moz-transition:background-color 0.2s ease-in-out;
+    -o-transition:background-color 0.2s ease-in-out;
+    transition:background-color 0.2s ease-in-out;
+    i {
+      color: $white;
+    }
+  }
+  .share-button.twitter {
+    background-color: #1D8DEE;
+    padding: 3px 7px 0px 7px;
+    &:hover {
+      background-color: $green;
+      cursor: pointer;
+    }
+  }
+  .share-button.facebook {
+    background-color: #2D448A;
+    padding: 3px 11px 0px 11px;
+    &:hover {
+      background-color: $green;
+      cursor: pointer;
+    }
+  }
+}
+
 /* DISQUS COMMENTS */
 #disqus_thread{
      position: relative;

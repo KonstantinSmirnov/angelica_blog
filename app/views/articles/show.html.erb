@@ -22,6 +22,9 @@
       <% end %>
     </div>
     <div class="col-sm-12 col-md-9 article-show box-border">
+      <%= render partial: 'share_buttons', locals: { object: @article } %>
+    </div>
+    <div class="col-sm-12 col-md-9 article-show box-border">
       <div id="disqus_thread"></div>
 <script>
 
