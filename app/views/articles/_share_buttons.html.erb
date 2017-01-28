@@ -2,9 +2,8 @@
   <a href=
       <%= "https://twitter.com/intent/tweet?" +
       "text=#{URI.encode(object.title)}" +
-      "&url=#{article_url(object)}" +
-      "&hashtags=" +
-      "&via=" %>
+      "&url=#{article_url(object)}"
+      %>
   ><span class="share-button twitter">
     <i class="fa fa-twitter"></i>
   </span></a>
