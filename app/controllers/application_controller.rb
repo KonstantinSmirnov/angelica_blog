@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   def initialize_app
     @categories = Category.all
+    @about_page = About.first
   end
 
   def render_404

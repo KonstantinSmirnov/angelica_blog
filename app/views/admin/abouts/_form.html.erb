@@ -1,0 +1,8 @@
+<%= simple_form_for [:admin, @about_page], url: admin_about_path do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :text %>
+
+  <%= f.submit 'Save', class: 'btn btn-outline-primary' %>
+  <%= link_to 'Delete', admin_about_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
+<% end %>

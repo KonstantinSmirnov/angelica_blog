@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  get 'about' => 'abouts#show'
 
   resources :articles, only: [:index, :show]
   resources :categories, only: [:show]
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
       resources :sections
     end
     resources :categories
+    resource :about
     get 'profile' => 'profiles#edit'
     patch 'update_email' => 'profiles#update_email'
     post 'update_password' => 'profiles#update_password'

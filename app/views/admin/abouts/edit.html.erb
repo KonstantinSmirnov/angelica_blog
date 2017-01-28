@@ -1,0 +1,6 @@
+<% if @about_page.nil? %>
+  <h1>Page is not created yet</h1>
+  <%= link_to 'Create', new_admin_about_path, class: 'btn btn-outline-primary' %>
+<% else %>
+  <%= render 'form' %>
+<% end %>

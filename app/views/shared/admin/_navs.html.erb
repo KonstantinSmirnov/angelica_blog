@@ -9,6 +9,9 @@
     <%= link_to "Categories", admin_categories_path, class: "nav-link #{ 'active' if controller?('admin/categories') }" %>
   </li>
   <li class="nav-item">
+    <%= link_to "About page", edit_admin_about_path, class: "nav-link #{ 'active' if controller?('admin/abouts') }" %>
+  </li>
+  <li class="nav-item">
     <%= link_to "Profile", admin_profile_path, class: "nav-link #{ 'active' if controller?('admin/profiles') }" %>
   </li>
 </ul>

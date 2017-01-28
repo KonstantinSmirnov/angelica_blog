@@ -51,7 +51,6 @@ feature 'Dashboard' do
       expect(page).to have_selector('a.active', text: 'Categories')
     end
 
-
     describe 'Dashboard parameters' do
 
       scenario 'showes published articles count' do

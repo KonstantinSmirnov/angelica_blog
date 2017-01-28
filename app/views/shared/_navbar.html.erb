@@ -21,6 +21,11 @@
             <%= link_to category.name, category_path(category), class: "nav-link #{ 'active' if controller?('categories') && params[:id] == category.slug }" %>
           </li>
         <% end %>
+        <% unless @about_page.nil? %>
+          <li class="nav-item">
+            <%= link_to 'About', about_path, class: "nav-link #{ 'active' if controller?('abouts') }" %>
+          </li>
+        <% end %>
         <% if current_user %>
           <li class="nav-item">
             <%= link_to 'Admin', admin_dashboard_path, class: "nav-link #{ 'active' if namespace?('admin') }" %>
