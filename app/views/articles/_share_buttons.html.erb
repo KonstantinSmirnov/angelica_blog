@@ -12,7 +12,7 @@
           "<%= "#{article_url(object)}" %>",
           "<%= "#{object.title}" %>",
           "<%= "#{object.description}" %>",
-          "<%= "#{URI(request.base_url)}#{object.cover_image.url(:medium)}" unless object.cover_image.nil? %>",
+          "<%= "#{URI(request.base_url)}#{object.cover_image.url(:medium)}" %>",
           "<%= URI(request.base_url) %>")'>
     <i class="fa fa-facebook"></i>
   </span>
