@@ -36,9 +36,12 @@ feature 'ABOUT PAGE' do
 
     context 'can send a email' do
       let!(:about_page) { FactoryGirl.create(:about) }
+      let!(:admin) { FactoryGirl.create(:admin, email: 'k.smi@mail.ru') }
+
       before(:each) do
         visit '/about'
       end
+
       scenario 'Has Contact me title' do
         expect(page).to have_selector('h1', text: 'Write a letter')
       end
@@ -83,12 +86,7 @@ feature 'ABOUT PAGE' do
 
         expect(page).to have_selector('div.contact_form_message span.help-block', text: "can't be blank")
       end
-      scenario 'email is sent'
-      scenario 'email contents entered data'
-      scenario 'email is sent to admin email'
-
     end
-
   end
 
   context 'As a visitor I try to admin about page' do

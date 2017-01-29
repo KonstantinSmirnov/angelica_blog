@@ -21,10 +21,13 @@ class AboutsController < ApplicationController
         Email: #{params[:contact_form][:email]}\n
         Message: #{params[:contact_form][:message]}"
       }
-      mg_client.send_message ENV['DOMAIN'], message_params
-
-      flash[:success] = 'Your message has been sent'
-      redirect_to about_path
+      if mg_client.send_message ENV['DOMAIN'], message_params
+        flash[:success] = 'Your message has been sent'
+        redirect_to about_path
+      else
+        flash[:notice] = 'Your email was not sent. Please try again'
+        render 'show'
+      end
     else
       render 'show'
     end
