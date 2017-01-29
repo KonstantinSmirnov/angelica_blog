@@ -64,6 +64,8 @@ gem "paperclip", "~> 5.0.0"
 
 gem 'translit'
 
+# Emails sending through Mailgun
+gem 'mailgun-ruby', '~>1.1.2'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
