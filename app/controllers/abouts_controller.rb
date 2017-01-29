@@ -16,9 +16,10 @@ class AboutsController < ApplicationController
         from: ENV['LETTER_FROM'],
         to: admin.email,
         subject: "A letter from Peanut page",
-        text: "From: #{params[:contact_form][:name]}\n
-              Email: #{params[:contact_form][:email]}\n
-              Message: #{params[:contact_form][:message]}"
+        text:
+        "From: #{params[:contact_form][:name]}\n
+        Email: #{params[:contact_form][:email]}\n
+        Message: #{params[:contact_form][:message]}"
       }
       mg_client.send_message ENV['DOMAIN'], message_params
 
