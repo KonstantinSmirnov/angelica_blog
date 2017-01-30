@@ -2,8 +2,10 @@
   <%= f.error_notification %>
 
   <%= f.input :status, collection: Article.statuses.keys, default: 0 if @article.persisted? %>
-  <small class="text-muted remove_margin_from_top"><%= "Published #{@article.published_at.strftime('%d %b %Y')}" if @article.published? %></small>
-
+  <% if @article.published? %>
+    <small class="text-muted remove_margin_from_top"><%= "Published #{@article.published_at.strftime('%d %b %Y')}" %></small>
+  <% end %>
+  
   <%= f.input :category_id, collection: Category.all %>
 
   <%= f.input :title, placeholder: 'Write your article title here' %>
