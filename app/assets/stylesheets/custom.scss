@@ -46,6 +46,11 @@ body {
 .top-margin {
   margin-top: 15px;
 }
+.remove_margin_from_top {
+  display: block;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
 span.help-block {
   color: red;
 }
@@ -193,11 +198,6 @@ footer {
 .article_section {
   &:hover {
     background-color: $footerGray;
-  }
-  .delete_section {
-    display: block;
-    margin-top: -15px;
-    margin-bottom: 15px;
   }
 }
 
