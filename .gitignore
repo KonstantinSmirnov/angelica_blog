@@ -19,8 +19,8 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-# Config
-config/database.yml
+# Database config
+# config/database.yml
 
 # Foreman
 procfile

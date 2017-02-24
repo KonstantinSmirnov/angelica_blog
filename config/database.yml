@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: angelica_blog_production
-  username: angelica_blog
-  password: <%= ENV['ANGELICA_BLOG_DATABASE_PASSWORD'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
