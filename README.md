@@ -1,24 +1,42 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# .env file
 
-Things you may want to cover:
+## Database setup
+DATABASE_USERNAME=
+DATABASE_PASSWORD=
 
-* Ruby version
+SECRET_KEY_BASE=
 
-* System dependencies
+## Facebook share setup
+FACEBOOK_APP_ID=
 
-* Configuration
+## Mailgun send letters setup
+MAILGUN_API_KEY=
+DOMAIN=
+LETTER_FROM=
 
-* Database creation
+# Database.yml file
+## PostgreSQL. Versions 9.1 and up are supported.
 
-* Database initialization
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-* How to run the test suite
+development:
+  <<: *default
+  database: angelica_blog_development
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+test:
+  <<: *default
+  database: angelica_blog_test
 
-* ...
+production:
+  <<: *default
+  database: angelica_blog_production
+  username: angelica_blog
+  password: <%= ENV['ANGELICA_BLOG_DATABASE_PASSWORD'] %>
